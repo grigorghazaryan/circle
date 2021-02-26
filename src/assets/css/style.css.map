@@ -8,7 +8,8 @@
         "../scss/includes/_global.scss",
         "../scss/includes/_header.scss",
         "../scss/includes/_footer.scss",
-        "../scss/includes/_home.scss"
+        "../scss/includes/_home.scss",
+        "../scss/includes/_team.scss"
     ],
     "names": [],
     "file": "style.css"

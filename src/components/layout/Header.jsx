@@ -90,16 +90,16 @@ function Header (props) {
                                     <NavLink to="/" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>SERVICES</NavLink>
                                 </li>
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/about" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>TEAM</NavLink>
+                                    <NavLink to="/team" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>TEAM</NavLink>
                                 </li>
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/products" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>WORKS</NavLink>
+                                    <NavLink to="/works" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>WORKS</NavLink>
                                 </li>    
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/media" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>BLOG</NavLink>
+                                    <NavLink to="/blog" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>BLOG</NavLink>
                                 </li>   
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/contact" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>SHOP</NavLink>
+                                    <NavLink to="/shop" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>SHOP</NavLink>
                                 </li>   
                             </ul>
                             <div  className="mobile--menu__left__main__menu__social">

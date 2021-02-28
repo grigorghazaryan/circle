@@ -13,7 +13,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
-// import Home from './components/pages/Team';
+import Team from './components/pages/Team';
 
 
 function App() {
@@ -31,10 +31,10 @@ function App() {
             </Route>
             <Route path="/media">
               <Media/>
-            </Route>
+            </Route>*/}
             <Route path="/team">
               <Team/>
-            </Route> */}
+            </Route> 
             <Route path="/" exact>
               <Home />
             </Route>

@@ -1048,6 +1048,7 @@
   height: 369px;
   border-radius: 100%;
   max-width: 100%;
+  object-fit: cover;
 }
 
 .team__employee__row__info__title {

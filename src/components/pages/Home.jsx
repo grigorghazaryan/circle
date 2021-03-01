@@ -110,7 +110,7 @@ function Home (props) {
                                 <form >
                                     <div  className="home__request__container__form__main">
                                         <div className="home__request__container__form__main__left">
-                                            <input id="name" type="text"  placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
+                                            <input id="email" type="email"  placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
 
                                             <div  className="home__request__container__form__main__left__row">
                                                 <div className="home__request__container__form__main__left__row__quote">

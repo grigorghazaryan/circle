@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import logo from '../../assets/img/Logo.svg';
@@ -12,9 +12,22 @@ import Instagram from '../../assets/img/social/Instagram.svg';
 import InstagramHover from '../../assets/img/social/hover/Instagram.svg';
 import Behance from '../../assets/img/social/Behance.svg';
 import BehanceHover from '../../assets/img/social/hover/Behance.svg';
+import { withRouter } from 'react-router-dom';
+ 
+function Header ( {history} ) {
+     
+    const [ headerType, setHeaderType ] = useState( (window.location.pathname === "/" ) ? "default" : "absolute"  ); 
 
+    useEffect( ()=>{
+        history.listen((location, action) => { 
+            if ( location.pathname === "/" )
+                setHeaderType( "default" );
+            else {
+                setHeaderType( "absolute" )
+            } 
+        });
+    }, []);
 
-function Header (props) {
     function onClickShowMobileMenu() {
         let main_menu = document.getElementsByClassName('mobile--menu__left');
     
@@ -67,8 +80,7 @@ function Header (props) {
 
     return (
         <div>
-
-            <header className="mobile--menu">
+            <header className= {`mobile--menu header-type-${headerType}`}  >
                 <div className="container container--max">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
@@ -147,4 +159,4 @@ function Header (props) {
     )
 }
 
-export default Header ;
+export default withRouter(Header); ;

@@ -12,40 +12,29 @@ import './assets/css/style.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import Home from './components/pages/Home';
-import Team from './components/pages/Team';
-import Services from './components/pages/Services';
+// import Home from './components/pages/Home';
+// import Team from './components/pages/Team';
+// import Services from './components/pages/Services';
+import Routes from "./routes";
 
+function App() { 
+  
 
-function App() {
   return (
     <div className="App">
        <BrowserRouter>
         <div>
-          <Header/>
-          <Switch>
-            {/* <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/products">
-              <Products />
-            </Route>
-            <Route path="/media">
-              <Media/>
-            </Route>*/}
-            <Route path="/team">
-              <Team/>
-            </Route> 
-            <Route path="/services">
-              <Services/>
-            </Route>            
-            <Route path="/" exact>
-              <Home />
-            </Route>
-
-          </Switch>
-
-          <Footer/>
+            <Header/>
+            <Switch> 
+              {
+                Routes.map( (routeConfig,i) => {
+                  return (
+                    <Route path={routeConfig.path} exact={routeConfig.exact}  component={routeConfig.component} key={i}  />
+                  )
+                })
+              }
+            </Switch>
+            <Footer/>
         </div>
       </BrowserRouter>
     </div>

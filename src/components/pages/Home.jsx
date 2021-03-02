@@ -40,7 +40,7 @@ function Home (props) {
 
                             <h1 className="home__design__info__title">TECHNICAL<span>DESIGN</span></h1>
                             <p className="home__design__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
-                            <NavLink to="/" className="home__design__info__link">{`read 
+                            <NavLink to="/services" className="home__design__info__link">{`read 
                             more`}</NavLink>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ function Home (props) {
 
                             <h1 className="home__drawings__left__info__title">TECHNICAL<span>DRAWINGS</span></h1>
                             <p className="home__drawings__left__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in </p>
-                            <NavLink to="/" className="home__drawings__left__info__link">{`read 
+                            <NavLink to="/services" className="home__drawings__left__info__link">{`read 
                             more`}</NavLink>
                         </div>
 
@@ -87,7 +87,7 @@ function Home (props) {
                             </div>
                             <div  className="home__branding__top__info">
                                 <h2 className="home__branding__top__info__title">BRANDING</h2>
-                                <NavLink to="/"  className="home__branding__top__info__link">{`read 
+                                <NavLink to="/services"  className="home__branding__top__info__link">{`read 
                                 more`}</NavLink>
                             </div>
                         </div>

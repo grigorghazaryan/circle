@@ -1,5 +1,11 @@
 .mobile--menu{
     background-color: #FFFFFF;
+    &.header-type-absolute{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: transparent;
+    }
     &__main{
         &__img{
             max-height: 155px;

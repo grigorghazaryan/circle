@@ -14,6 +14,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
 import Team from './components/pages/Team';
+import Services from './components/pages/Services';
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
             <Route path="/team">
               <Team/>
             </Route> 
+            <Route path="/services">
+              <Services/>
+            </Route>            
             <Route path="/" exact>
               <Home />
             </Route>

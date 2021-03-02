@@ -73,7 +73,7 @@ function Header (props) {
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div  className="mobile--menu__main">
-                            <NavLink to="/"  exact>                                   
+                                <NavLink to="/"  exact>                                   
                                     <Image src={logo} className="mobile--menu__main__img"  alt="logo"/>
                                 </NavLink>
                                 <div className="mobile--menu__main__toggler"  onClick={onClickShowMobileMenu}><Image src={pictorial}/></div>
@@ -87,7 +87,7 @@ function Header (props) {
                         <div className="mobile--menu__left__main__menu">              
                             <ul className="mobile--menu__left__main__menu__navbar">
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>SERVICES</NavLink>
+                                    <NavLink to="/services" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>SERVICES</NavLink>
                                 </li>
                                 <li className="mobile--menu__left__main__menu__navbar__item">
                                     <NavLink to="/team" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>TEAM</NavLink>

@@ -206,6 +206,8 @@
             &__image{
                 width: 100%;
                 height: auto;
+                max-height: 270px;
+                object-fit: cover;
             }
         }
 
@@ -384,7 +386,7 @@
     }
     &__contact{
         &__title{
-            background-image: url('../img/Home/contact-us-image.png');
+            // background-image: url('../img/Home/contact-us-image.png');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;

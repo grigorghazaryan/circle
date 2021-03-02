@@ -9,6 +9,7 @@ import pngFile from '../../assets/img/Home/icons/png-file.svg';
 import gifFile from '../../assets/img/Home/icons/gif-file.svg';
 import jpgFile from '../../assets/img/Home/icons/jpg-file.svg';
 import pdfFile from '../../assets/img/Home/icons/pdf-file.svg';
+import bannerBg from '../../assets/img/Home/contact-us-image.png';
 
 
 function Home (props) {
@@ -156,7 +157,7 @@ function Home (props) {
         </div>
 
         <div className="home__contact">
-            <div className="home__contact__title">
+            <div className="home__contact__title"  style={{ backgroundImage: `url(${bannerBg})` }}>
                 <h2 className="home__contact__title__text">CONTACT US</h2>
             </div>
 

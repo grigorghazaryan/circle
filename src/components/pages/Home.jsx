@@ -26,7 +26,7 @@ function Home (props) {
         <div className="home__design">
             <div className="conntainer-fluid ">
                 <div className="row m-0">
-                    <div className="col-lg-6 col-12 p-0">
+                    <div className="col-lg-6 col-12 p-0 order-12 order-lg-1">
                         <div className="home__design__video">
                             <video autoPlay muted loop>
                                 <source src={bannerVideo} type="video/mp4"/>
@@ -34,7 +34,7 @@ function Home (props) {
                             </video>
                         </div>
                     </div>
-                    <div className="col-lg-6 col-12 p-0">
+                    <div className="col-lg-6 col-12 p-0 order-1 order-lg-12">
                         <div className="home__design__info">
                             <Image src={Technicaldesign}  className="home__design__info__icon"  alt="TECHNICAL DESIGN icon"/>
 
@@ -164,12 +164,12 @@ function Home (props) {
             
             <div className="conntainer-fluid ">
                 <div className="row m-0">
-                    <div className="col-lg-6 col-12 p-0">
+                    <div className="col-lg-6 col-12 p-0 order-12 order-lg-1">
                         <div className="home__contact__map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d761.6320625052497!2d44.493313929216555!3d40.21955559871178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEzJzEwLjQiTiA0NMKwMjknMzcuOSJF!5e0!3m2!1sen!2s!4v1614338625900!5m2!1sen!2s" width="600" height="450" allowFullScreen="" loading="lazy" title="Map"></iframe>
                         </div>
                     </div>
-                    <div className="col-lg-6 col-12 p-0">
+                    <div className="col-lg-6 col-12 p-0 order-1 order-lg-12">
                         <div className="home__contact__form">
                             <form >
                                 <div  className="home__contact__form__main">

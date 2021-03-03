@@ -120,6 +120,11 @@
                 right: 20px;
                 top: 20px;
                 cursor: pointer;
+                &__icon{
+                    font-size: 40px;
+                    color: #FFFFFF;    
+                    line-height: 1;
+                }
             }
             
             transform: translate3d( 100vw, 0, 0 );
@@ -219,8 +224,9 @@
             &__main{
                 max-width: 70%;
                 &__hide{
-                    img{
-                        height: 30px;
+                    &__icon{
+                        font-size: 30px;
+                        color: #FFFFFF;
                     }
                 }
                 &__menu{
@@ -267,7 +273,6 @@
     .mobile--menu{
         &__main{
             &__toggler{
-                margin-top: 28px;
                 img{
                     height: 30px;
                 }

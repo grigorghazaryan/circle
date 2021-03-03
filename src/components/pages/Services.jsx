@@ -53,19 +53,19 @@ function Services (props) {
                     <div className="row services__work__row">
                         <div className="col-12 col-md-6 col-lg-4 services__work__row__col">
                             <div className="services__work__row__col__other">                                
-                                <Image src={box}   alt="logo"  className="services__work__row__col__other__image"/>
+                                <Image src={box}   alt="work"  className="services__work__row__col__other__image"/>
                                 <h3 className="services__work__row__col__other__title">Title</h3>
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-4 services__work__row__col">
                             <div className="services__work__row__col__other">                                
-                                <Image src={box}   alt="logo"  className="services__work__row__col__other__image"/>
+                                <Image src={box}   alt="work"  className="services__work__row__col__other__image"/>
                                 <h3 className="services__work__row__col__other__title">Title</h3>
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-4 services__work__row__col">
                             <div className="services__work__row__col__other">                                
-                                <Image src={box}   alt="logo"  className="services__work__row__col__other__image"/>
+                                <Image src={box}   alt="work"  className="services__work__row__col__other__image"/>
                                 <h3 className="services__work__row__col__other__title">Title</h3>
                             </div>
                         </div>

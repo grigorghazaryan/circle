@@ -1,6 +1,7 @@
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
 import Team from "./components/pages/Team";
+import Works from "./components/pages/Works";
 
 export default [
     {
@@ -17,5 +18,10 @@ export default [
         path: '/services',
         exact: false,
         component: Services
+    },
+    {
+        path: '/works',
+        exact: false,
+        component: Works,
     }
 ]

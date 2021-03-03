@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import logo from '../../assets/img/Logo.svg';
 import pictorial from "../../assets/img/pictorial.svg";
-import Close from '../../assets/img/Close.png';
 import fb from '../../assets/img/social/Facebook.svg';
 import fbHover from '../../assets/img/social/hover/Facebook.svg';
 import linkdin from '../../assets/img/social/linkdin.svg';
@@ -146,7 +145,7 @@ function Header ( {history} ) {
 
                         </div>
                         
-                        <div className="mobile--menu__left__main__hide"   onClick={onClickHideMobileMenu}><Image src={Close}/>{/*<i className="lni lni-close"></i>*/}</div>
+                        <div className="mobile--menu__left__main__hide"   onClick={onClickHideMobileMenu}><span  className="mobile--menu__left__main__hide__icon">&#10005;</span></div>
                     </div>
 
                     <div className="mobile--menu__left__overlay  mobile--menu__left__show__overlay" onClick={onClickHideMobileMenu}>

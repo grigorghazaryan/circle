@@ -1,0 +1,153 @@
+.works{
+    &__banner{
+        padding-left: 15px;
+        padding-right: 15px;     
+        text-align: center;    
+        padding-top: 160px;   
+        padding-bottom: 188px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        &__title{
+            font-size: 80px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-family: $fontHeavy;
+            margin-bottom: 0;
+        }
+    }
+    &__content{
+        padding-bottom: 120px;
+        &__tabs{
+            border-bottom: none;
+            padding: 32px 55px;
+            a{
+                border: none!important;
+                padding: 0;
+                padding-right: 60px;
+                font-size: 32px;
+                font-family: $fontOblique;
+                color: #727272;
+                &.active{
+                    color: #F9B436!important;
+                }
+            }
+            &__tab{
+                &__container{
+                    display: flex;
+                    flex-wrap: wrap;
+                    &__item{
+                        width: 33.333333%;
+                        position: relative;
+                        &__image{
+                            img{
+                                width: 100%;
+                                height: 430px;
+                                object-fit: cover;
+                            }
+                        }
+                        &__info{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: rgba(0, 0, 0, 0.74);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            opacity: 0;
+                            transition: opacity 1s;
+                            padding: 15px;
+                            &__link{
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                text-align: center;
+                                &:hover{
+                                    text-decoration: none!important;
+                                }
+                                &__content{
+                                    &__title{
+                                        font-family: $fontHeavy;
+                                        font-size: 32px;
+                                        color: #FFFFFF;
+                                        text-transform: uppercase;
+                                    }
+                                    &__subtitle{
+                                        font-family: $fontRegular;
+                                        font-size: 30px;
+                                        color: #FFFFFF;
+                                    }
+                                }
+                            }
+                            &:hover{
+                                opacity: 1;
+                                transition: opacity 1s;
+                            }
+ 
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 991px){
+    .works{
+        &__banner{
+            padding-top: 80px;   
+            padding-bottom: 90px;
+            &__title{
+                font-size: 40px;
+            }
+        }
+        &__content{
+            &__tabs{
+                &__tab{
+                    &__container{
+                        &__item{
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px){
+    .works{
+        &__content{
+            &__tabs{
+                a{
+                    font-size: 20px;
+                }                
+                &__tab{
+                    &__container{
+                        &__item{
+                            width: 100%;
+                            &__info{
+                                &__link{
+                                    &__content{
+                                        &__title{
+                                            font-size: 20px;
+                                        }
+                                        &__subtitle{
+                                            font-size: 16px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}

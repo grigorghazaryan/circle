@@ -110,6 +110,9 @@
         }
         &__content{
             &__tabs{
+                a{
+                    font-size: 20px;
+                }   
                 &__tab{
                     &__container{
                         &__item{
@@ -125,9 +128,6 @@
     .works{
         &__content{
             &__tabs{
-                a{
-                    font-size: 20px;
-                }                
                 &__tab{
                     &__container{
                         &__item{

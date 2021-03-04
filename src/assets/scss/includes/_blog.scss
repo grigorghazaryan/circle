@@ -1,0 +1,131 @@
+.blog{
+    &__banner{
+        padding-left: 15px;
+        padding-right: 15px;     
+        text-align: center;    
+        padding-top: 60px;   
+        padding-bottom: 153px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        &__title{
+            font-size: 80px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-family: $fontHeavy;
+            margin-bottom: 0;
+        }
+    }
+    &__list{
+        padding-top: 60px;
+        &__row{
+            margin-left: -27px;
+            margin-right: -27px;
+            &__col{
+                padding-left: 27px;
+                padding-right: 27px;
+                &__info{
+                    &:hover &{
+                        &__image{
+                            img{
+                                transform: scale(1.2);
+                            }
+                        }
+                        &__content{
+                            &__text{
+                                &__title{
+                                    opacity: 0.5;
+                                }
+                                &__description{
+                                    opacity: 0.5;
+                                }
+                            }
+                        }
+                    }
+                    &:hover{
+                        a{
+                            &:hover{
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    
+                    &__image{
+                        overflow: hidden;
+                        img{
+                            height: 280px;
+                            width: 100%;
+                            object-fit: cover;
+                            transition: transform .2s;
+                        }
+                    }
+                    &__content{
+                        margin-bottom: 60px;
+                        &__date{
+                            font-size: 24px;
+                            font-family: $fontRegular;
+                            color: #C3C2C3;
+                            margin-top: 16px;
+                            margin-bottom: 16px;
+                        }
+                        &__text{
+                            a{
+                                &:hover{
+                                    text-decoration: none;
+                                }
+                            }
+                            &__title{
+                                color: #0E4D80;
+                                font-size: 32px;
+                                font-family: $fontMedium;
+                                margin-bottom: 16px;
+                            }
+                            &__description{
+                                color: #727272;
+                                font-size: 24px;
+                                font-family: $fontMedium;
+                                line-height: 35px;
+                                margin-bottom: 0;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 991px){
+    .blog{
+        &__banner{
+            padding-top: 70px;   
+            padding-bottom: 90px;
+            &__title{
+                font-size: 40px;
+            }
+        }
+        &__list{
+            &__row{
+                &__col{
+                    &__info{
+                        &__content{
+                            &__date{
+                                font-size: 18px;
+                            }
+                            &__text{
+                                &__title{
+                                    font-size: 22px;
+                                }
+                                &__description{
+                                    font-size: 18px;
+                                    line-height: 25px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

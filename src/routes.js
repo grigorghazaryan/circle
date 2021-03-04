@@ -1,3 +1,5 @@
+import Blog from "./components/pages/Blog";
+import BlogSingle from "./components/pages/BlogSingle";
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
 import Team from "./components/pages/Team";
@@ -23,5 +25,15 @@ export default [
         path: '/works',
         exact: false,
         component: Works,
+    },
+    {
+        path: '/blog/:id',
+        exact: false,
+        component: BlogSingle,
+    },
+    {
+        path: '/blog',
+        exact: false,
+        component: Blog,
     }
 ]

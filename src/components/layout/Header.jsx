@@ -14,7 +14,7 @@ import BehanceHover from '../../assets/img/social/hover/Behance.svg';
 import { withRouter } from 'react-router-dom';
  
 function Header ( {history} ) {
-     
+    // add class to meu so on home page we have default menu and on other pages transparent menu
     const [ headerType, setHeaderType ] = useState( (window.location.pathname === "/" ) ? "default" : "absolute"  ); 
 
     useEffect( ()=>{
@@ -98,19 +98,19 @@ function Header ( {history} ) {
                         <div className="mobile--menu__left__main__menu">              
                             <ul className="mobile--menu__left__main__menu__navbar">
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/services" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>SERVICES</NavLink>
+                                    <NavLink to="/services" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact  onClick={onClickHideMobileMenu}>SERVICES</NavLink>
                                 </li>
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/team" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>TEAM</NavLink>
+                                    <NavLink to="/team" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>TEAM</NavLink>
                                 </li>
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/works" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>WORKS</NavLink>
+                                    <NavLink to="/works" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>WORKS</NavLink>
                                 </li>    
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/blog" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>BLOG</NavLink>
+                                    <NavLink to="/blog" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>BLOG</NavLink>
                                 </li>   
                                 <li className="mobile--menu__left__main__menu__navbar__item">
-                                    <NavLink to="/shop" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" onClick={onClickHideMobileMenu}>SHOP</NavLink>
+                                    <NavLink to="/shop" activeClassName='active' className = "mobile--menu__left__main__menu__navbar__item__link" exact onClick={onClickHideMobileMenu}>SHOP</NavLink>
                                 </li>   
                             </ul>
                             <div  className="mobile--menu__left__main__menu__social">

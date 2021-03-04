@@ -151,3 +151,12 @@
         }
     }    
 }
+@media only screen and (max-width: 615px){
+    .works{
+        &__content{
+            &__tabs{
+                flex-direction: column;
+            }
+        }
+    }
+}

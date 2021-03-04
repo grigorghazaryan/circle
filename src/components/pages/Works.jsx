@@ -119,7 +119,7 @@ function Works (props) {
                             
                         </div>
                     </Tab>
-                    <Tab eventKey="branding" title="Branding">
+                    <Tab eventKey="branding" title="Branding" className="works__content__tabs__tab">
                         <div className="works__content__tabs__tab__container">
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
@@ -207,7 +207,7 @@ function Works (props) {
                             </div>
                         </div>
                     </Tab>
-                    <Tab eventKey="technical" title="Technical">
+                    <Tab eventKey="technical" title="Technical" className="works__content__tabs__tab">
                         <div className="works__content__tabs__tab__container">
                             
                             <div className="works__content__tabs__tab__container__item">
@@ -254,7 +254,7 @@ function Works (props) {
                             </div>
                         </div>
                     </Tab>
-                    <Tab eventKey="interior" title="Interior">
+                    <Tab eventKey="interior" title="Interior" className="works__content__tabs__tab">
                         <div className="works__content__tabs__tab__container">
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">

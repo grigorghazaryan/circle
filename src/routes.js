@@ -2,6 +2,7 @@ import Blog from "./components/pages/Blog";
 import BlogSingle from "./components/pages/BlogSingle";
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
+import Shop from "./components/pages/Shop";
 import Team from "./components/pages/Team";
 import Works from "./components/pages/Works";
 
@@ -35,5 +36,10 @@ export default [
         path: '/blog',
         exact: false,
         component: Blog,
+    },
+    {
+        path: '/shop',
+        exact: false,
+        component: Shop,
     }
 ]

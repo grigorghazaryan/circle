@@ -144,7 +144,7 @@
 }
 
 .mobile--menu__left__main__menu__social__title a:hover {
-  color: #ffffff;
+  color: #F9B436;
   text-decoration: none;
 }
 
@@ -377,6 +377,10 @@
   height: 19px;
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+.home__banner .scroll--arrow {
+  bottom: 100px;
 }
 
 .home__design {

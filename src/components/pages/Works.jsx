@@ -20,7 +20,9 @@ function Works (props) {
                         <div className="works__content__tabs__tab__container">
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -34,7 +36,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -48,7 +52,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -62,7 +68,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -76,7 +84,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -90,7 +100,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -104,7 +116,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -123,7 +137,9 @@ function Works (props) {
                         <div className="works__content__tabs__tab__container">
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -137,7 +153,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -151,7 +169,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -165,7 +185,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -179,7 +201,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -193,7 +217,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -212,7 +238,9 @@ function Works (props) {
                             
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -226,7 +254,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -240,7 +270,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -258,7 +290,9 @@ function Works (props) {
                         <div className="works__content__tabs__tab__container">
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -272,7 +306,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -286,7 +322,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work1} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work1} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">
@@ -300,7 +338,9 @@ function Works (props) {
                             </div>
                             <div className="works__content__tabs__tab__container__item">
                                 <div className="works__content__tabs__tab__container__item__image">
-                                    <Image src={work2} alt="work"/>
+                                    <NavLink to="/">
+                                        <Image src={work2} alt="work"/>
+                                    </NavLink>
                                 </div>
                                 <div  className="works__content__tabs__tab__container__item__info">
                                     <NavLink to="/" className="works__content__tabs__tab__container__item__info__link">

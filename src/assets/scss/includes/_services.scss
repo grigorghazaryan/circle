@@ -64,10 +64,26 @@
                 padding-left: 25px;
                 padding-right: 25px;
                 &__other{
-                    &__image{
-                        width: 100%;
-                        height: auto;
+                    overflow: hidden;
+                    a{
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    }
+                    &__top{
+                        height: 280px;
+                        overflow: hidden;
                         margin-bottom: 24px;
+                        &__image{
+                            width: 100%;
+                            height: auto;
+                            transition: transform .2s;
+                            height: 280px;
+                            object-fit: cover;
+                            &:hover{
+                                transform: scale(1.2);
+                            }
+                        }
                     }
                     &__title{
                         font-size: 32px;
@@ -124,11 +140,6 @@
                     padding-left: 25px;
                     padding-right: 25px;
                     &__other{
-                        &__image{
-                            width: 100%;
-                            height: auto;
-                            margin-bottom: 24px;
-                        }
                         &__title{
                             font-size: 32px;
                             font-family: $fontRegular;
@@ -140,5 +151,14 @@
             }
         }
         
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .services{
+        &__banner{
+                padding-top: 110px;
+                padding-bottom: 60px;
+        }
     }
 }

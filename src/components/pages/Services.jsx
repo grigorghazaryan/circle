@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import bannerBg from '../../assets/img/Services/bannerBg.png';
 import box from '../../assets/img/Services/box.png';
 
@@ -52,21 +53,34 @@ function Services (props) {
                     </div>
                     <div className="row services__work__row">
                         <div className="col-12 col-md-6 col-lg-4 services__work__row__col">
-                            <div className="services__work__row__col__other">                                
-                                <Image src={box}   alt="work"  className="services__work__row__col__other__image"/>
-                                <h3 className="services__work__row__col__other__title">Title</h3>
+                            <div className="services__work__row__col__other">           
+                                <NavLink to="/">
+                                    <div className="services__work__row__col__other__top">
+                                        <Image src={box}   alt="work"  className="services__work__row__col__other__top__image"/>
+                                    </div>
+                                    
+                                    <h3 className="services__work__row__col__other__title">Title</h3>
+                                </NavLink>
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-4 services__work__row__col">
-                            <div className="services__work__row__col__other">                                
-                                <Image src={box}   alt="work"  className="services__work__row__col__other__image"/>
-                                <h3 className="services__work__row__col__other__title">Title</h3>
+                            <div className="services__work__row__col__other">      
+                                <NavLink to="/">                          
+                                    <div className="services__work__row__col__other__top">
+                                        <Image src={box}   alt="work"  className="services__work__row__col__other__top__image"/>
+                                    </div>
+                                    <h3 className="services__work__row__col__other__title">Title</h3>
+                                </NavLink>
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-4 services__work__row__col">
-                            <div className="services__work__row__col__other">                                
-                                <Image src={box}   alt="work"  className="services__work__row__col__other__image"/>
-                                <h3 className="services__work__row__col__other__title">Title</h3>
+                            <div className="services__work__row__col__other"> 
+                                <NavLink to="/">                               
+                                    <div className="services__work__row__col__other__top">
+                                        <Image src={box}   alt="work"  className="services__work__row__col__other__top__image"/>
+                                    </div>
+                                    <h3 className="services__work__row__col__other__title">Title</h3>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

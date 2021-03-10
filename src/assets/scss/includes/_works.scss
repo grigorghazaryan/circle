@@ -20,12 +20,12 @@
         padding-bottom: 120px;
         &__tabs{
             border-bottom: none;
-            padding: 32px 55px;
+            padding: 16px 55px;
             a{
                 border: none!important;
                 padding: 0;
                 padding-right: 60px;
-                font-size: 32px;
+                font-size: 25px;
                 font-family: $fontOblique;
                 color: #727272;
                 &.active{
@@ -126,6 +126,10 @@
 }
 @media only screen and (max-width: 767px){
     .works{
+        &__banner{
+            padding-top: 110px;
+            padding-bottom: 60px;
+        }
         &__content{
             &__tabs{
                 &__tab{
@@ -133,13 +137,18 @@
                         &__item{
                             width: 100%;
                             &__info{
+                                position: relative;
+                                opacity: 1;
+                                background-color: #FFFFFF;
                                 &__link{
                                     &__content{
                                         &__title{
                                             font-size: 20px;
+                                            color: #727272;
                                         }
                                         &__subtitle{
                                             font-size: 16px;
+                                            color: #727272;
                                         }
                                     }
                                 }

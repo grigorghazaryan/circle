@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.c156b573.chunk.css",
-    "main.js": "/static/js/main.9f6556e3.chunk.js",
-    "main.js.map": "/static/js/main.9f6556e3.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.20c3a729.js",
-    "runtime-main.js.map": "/static/js/runtime-main.20c3a729.js.map",
+    "main.css": "/static/css/main.6cba21a4.chunk.css",
+    "main.js": "/static/js/main.e575d6b9.chunk.js",
+    "main.js.map": "/static/js/main.e575d6b9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e9857532.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e9857532.js.map",
     "static/css/2.150d169a.chunk.css": "/static/css/2.150d169a.chunk.css",
-    "static/js/2.55e9ab1a.chunk.js": "/static/js/2.55e9ab1a.chunk.js",
-    "static/js/2.55e9ab1a.chunk.js.map": "/static/js/2.55e9ab1a.chunk.js.map",
-    "static/js/3.e612dc70.chunk.js": "/static/js/3.e612dc70.chunk.js",
-    "static/js/3.e612dc70.chunk.js.map": "/static/js/3.e612dc70.chunk.js.map",
+    "static/js/2.17e756cf.chunk.js": "/static/js/2.17e756cf.chunk.js",
+    "static/js/2.17e756cf.chunk.js.map": "/static/js/2.17e756cf.chunk.js.map",
+    "static/js/3.949a10c1.chunk.js": "/static/js/3.949a10c1.chunk.js",
+    "static/js/3.949a10c1.chunk.js.map": "/static/js/3.949a10c1.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.150d169a.chunk.css.map": "/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.c156b573.chunk.css.map": "/static/css/main.c156b573.chunk.css.map",
-    "static/js/2.55e9ab1a.chunk.js.LICENSE.txt": "/static/js/2.55e9ab1a.chunk.js.LICENSE.txt",
+    "static/css/main.6cba21a4.chunk.css.map": "/static/css/main.6cba21a4.chunk.css.map",
+    "static/js/2.17e756cf.chunk.js.LICENSE.txt": "/static/js/2.17e756cf.chunk.js.LICENSE.txt",
     "static/media/1.b426c7ee.png": "/static/media/1.b426c7ee.png",
     "static/media/2.5f523af4.png": "/static/media/2.5f523af4.png",
     "static/media/style.css": "/static/media/video-line.3bd7b426.svg",
@@ -29,6 +29,7 @@
     "static/media/Logo.6889895f.svg": "/static/media/Logo.6889895f.svg",
     "static/media/Technicaldesign.22bc408a.svg": "/static/media/Technicaldesign.22bc408a.svg",
     "static/media/Technicaldrawings.67049cfc.svg": "/static/media/Technicaldrawings.67049cfc.svg",
+    "static/media/arrow.aebbd893.svg": "/static/media/arrow.aebbd893.svg",
     "static/media/bannerBg.62ef0771.png": "/static/media/bannerBg.62ef0771.png",
     "static/media/bannerBg.809d6270.png": "/static/media/bannerBg.809d6270.png",
     "static/media/blog.fc33cc96.png": "/static/media/blog.fc33cc96.png",
@@ -48,10 +49,10 @@
     "static/media/shop-product-image.609795b9.png": "/static/media/shop-product-image.609795b9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.20c3a729.js",
+    "static/js/runtime-main.e9857532.js",
     "static/css/2.150d169a.chunk.css",
-    "static/js/2.55e9ab1a.chunk.js",
-    "static/css/main.c156b573.chunk.css",
-    "static/js/main.9f6556e3.chunk.js"
+    "static/js/2.17e756cf.chunk.js",
+    "static/css/main.6cba21a4.chunk.css",
+    "static/js/main.e575d6b9.chunk.js"
   ]
 }

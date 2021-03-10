@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import logo from '../../assets/img/Logo.svg';
+import { HashLink } from 'react-router-hash-link';
 import pictorial from "../../assets/img/pictorial.svg";
 import fb from '../../assets/img/social/Facebook.svg';
 import fbHover from '../../assets/img/social/hover/Facebook.svg';
@@ -114,7 +115,10 @@ function Header ( {history} ) {
                                 </li>   
                             </ul>
                             <div  className="mobile--menu__left__main__menu__social">
-                                <p className="mobile--menu__left__main__menu__social__title">CONTACT US</p>
+                                <p className="mobile--menu__left__main__menu__social__title"> 
+                                    <HashLink to="/#contact" >CONTACT US
+                                    </HashLink>
+                                </p>
                                 <ul className="mobile--menu__left__main__menu__social__icons">
                                     <li className="mobile--menu__left__main__menu__social__icons__item">
                                         <a rel="noreferrer" href="https://www.linkedin.com/company/circle-technical-design" target="_blank" className="mobile--menu__left__main__menu__social__icons__item__link">

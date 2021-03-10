@@ -240,6 +240,17 @@
         }
     }
 }
+@media only screen and (min-width: 992px){
+    .team{
+        &__work{
+            &__container{
+                &__title{
+                    margin-left: 65px;
+                }
+            }
+        }
+    }
+}
 
 @media only screen and (max-width: 991px){
     .team{
@@ -300,6 +311,10 @@
 }
 @media only screen and (max-width: 767px){
     .team{
+        &__banner{
+            padding-top: 110px;
+            padding-bottom: 60px;
+        }
         &__employee{
             &__row{
                 padding-bottom: 0;

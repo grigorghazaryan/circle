@@ -33,7 +33,7 @@ function Footer (props) {
                         </a>
                     </li>
                 </ul>
-                <p className="footer__copyright">Circle technical design all rights reserved ©</p>
+                <p className="footer__copyright"> <span>Circle technical design</span> all rights reserved ©</p>
             </footer>
         </div>
     )

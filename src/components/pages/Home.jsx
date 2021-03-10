@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import bannerVideo from '../../assets/video/main-banner.mp4';
 import Technicaldesign from '../../assets/img/Home/Technicaldesign.svg';
 import Technicaldrawings from '../../assets/img/Home/Technicaldrawings.svg';
@@ -10,6 +11,7 @@ import gifFile from '../../assets/img/Home/icons/gif-file.svg';
 import jpgFile from '../../assets/img/Home/icons/jpg-file.svg';
 import pdfFile from '../../assets/img/Home/icons/pdf-file.svg';
 import bannerBg from '../../assets/img/Home/contact-us-image.png';
+import arrow from '../../assets/img/Home/icons/arrow.svg';
 
 
 function Home (props) {
@@ -17,13 +19,19 @@ function Home (props) {
 
     return (
     <div className="home">
-        <div className="home__video">
+        <div className="home__banner">
             <video autoPlay muted loop>
                 <source src={bannerVideo} type="video/mp4"/>
 
             </video>
+            <div className="scroll--arrow">
+                <HashLink smooth to="/#home__design" >
+                    <Image src={arrow} />
+                </HashLink>
+            </div>
+            
         </div>
-        <div className="home__design">
+        <div className="home__design" id="home__design">
             <div className="conntainer-fluid ">
                 <div className="row m-0">
                     <div className="col-lg-6 col-12 p-0 order-12 order-lg-1">
@@ -46,9 +54,16 @@ function Home (props) {
                     </div>
                 </div>
             </div>
+
+            <div className="scroll--arrow">
+                <HashLink smooth to="/#home__drawings" >
+                    <Image src={arrow} />
+                </HashLink>
+            </div>
+
         </div>
 
-        <div className="home__drawings">
+        <div className="home__drawings" id="home__drawings">
             <div className="conntainer-fluid ">
                 <div className="row m-0">
                     <div className="col-lg-6 col-12 p-0 home__drawings__left">
@@ -72,9 +87,16 @@ function Home (props) {
                     </div>
                 </div>
             </div>
+
+            <div className="scroll--arrow">
+                <HashLink smooth to="/#home__branding" >
+                    <Image src={arrow} />
+                </HashLink>
+            </div>
+
         </div>
 
-        <div className="home__branding">
+        <div className="home__branding" id="home__branding">
             <div className="conntainer-fluid ">
                 <div className="row m-0">
                     <div className="col-12 p-0 ">
@@ -95,9 +117,14 @@ function Home (props) {
                     </div>
                 </div>
             </div>
+            <div className="scroll--arrow">
+                <HashLink smooth to="/#home__branding--bottom" >
+                    <Image src={arrow} />
+                </HashLink>
+            </div>
         </div>
 
-        <div className="home__branding--bottom">
+        <div className="home__branding--bottom" id="home__branding--bottom">
             <Image src={box}   className="home__branding--bottom__image"  alt="image"/>
         </div>
 
@@ -154,9 +181,15 @@ function Home (props) {
                 </div>
             </div>
 
+            <div className="scroll--arrow">
+                <HashLink smooth to="/#contact" speed="9000">
+                    <Image src={arrow} />
+                </HashLink>
+            </div>
+
         </div>
 
-        <div className="home__contact">
+        <div className="home__contact" id="contact">
             <div className="home__contact__title"  style={{ backgroundImage: `url(${bannerBg})` }}>
                 <h2 className="home__contact__title__text">CONTACT US</h2>
             </div>

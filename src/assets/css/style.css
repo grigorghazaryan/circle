@@ -36,6 +36,14 @@
 
 .mobile--menu {
   background-color: #FFFFFF;
+  z-index: 3;
+}
+
+.mobile--menu.header-type-default {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 .mobile--menu.header-type-absolute {
@@ -353,12 +361,47 @@
   height: 64px;
 }
 
+.home__menu {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+}
+
+.home__menu__content {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.home__menu__content__item {
+  width: 8px;
+  height: 8px;
+  margin-bottom: 7px;
+  border-radius: 100%;
+}
+
+.home__menu__content__item__link {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 100%;
+  margin-bottom: 10px;
+  box-shadow: 4px 3px 13px #aaaaaa;
+  border: 1px solid #C3C2C3;
+  cursor: pointer;
+}
+
+.home__menu__content__item__link.active {
+  background-color: #EFB933;
+}
+
 .home__banner {
   overflow: hidden;
   width: 100%;
   height: 921px;
   position: relative;
   margin-bottom: 5px;
+  padding-top: 100px;
 }
 
 .home__banner video {
@@ -979,6 +1022,7 @@
 @media only screen and (max-width: 991px) {
   .home__banner {
     height: 500px;
+    padding-top: 89px;
   }
   .home__banner video {
     height: 500px;

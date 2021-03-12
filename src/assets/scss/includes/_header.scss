@@ -1,5 +1,12 @@
 .mobile--menu{
     background-color: #FFFFFF;
+    z-index: 3;
+    &.header-type-default{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: #ffffff;
+    }
     &.header-type-absolute{
         position: absolute;
         top: 0;

@@ -79,7 +79,7 @@ function Header ( {history} ) {
     onClickHideMobileMenu()
 
     return (
-        <div>
+        <div  id="header">
             <header className= {`mobile--menu header-type-${headerType}`}  >
                 <div className="container container--max">
                     <div className="row">

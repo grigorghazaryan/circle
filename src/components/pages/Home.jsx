@@ -12,23 +12,24 @@ import jpgFile from '../../assets/img/Home/icons/jpg-file.svg';
 import pdfFile from '../../assets/img/Home/icons/pdf-file.svg';
 import bannerBg from '../../assets/img/Home/contact-us-image.png';
 import arrow from '../../assets/img/Home/icons/arrow.svg';
-
+import { Link } from 'react-scroll'
 
 function Home (props) {
 
+    // const handleClick = (i) => {
+    //     tablinks = document.getElementsByClassName("home__what--we--do__tabs__steps__item");
+    //     for (i = 0; i < tablinks.length; i++) {
+    //       tablinks[i].className = tablinks[i].className.replace(" active", "");
+    //     }
+    // }
 
     return (
     <div className="home">
-        <div className="home__banner">
+        <div className="home__banner" id="home__banner">
             <video autoPlay muted loop>
                 <source src={bannerVideo} type="video/mp4"/>
 
             </video>
-            <div className="scroll--arrow">
-                <HashLink smooth to="/#home__design" >
-                    <Image src={arrow} />
-                </HashLink>
-            </div>
             
         </div>
         <div className="home__design" id="home__design">
@@ -55,11 +56,6 @@ function Home (props) {
                 </div>
             </div>
 
-            <div className="scroll--arrow">
-                <HashLink smooth to="/#home__drawings" >
-                    <Image src={arrow} />
-                </HashLink>
-            </div>
 
         </div>
 
@@ -88,11 +84,6 @@ function Home (props) {
                 </div>
             </div>
 
-            <div className="scroll--arrow">
-                <HashLink smooth to="/#home__branding" >
-                    <Image src={arrow} />
-                </HashLink>
-            </div>
 
         </div>
 
@@ -117,76 +108,67 @@ function Home (props) {
                     </div>
                 </div>
             </div>
-            <div className="scroll--arrow">
-                <HashLink smooth to="/#home__branding--bottom" >
-                    <Image src={arrow} />
-                </HashLink>
+
+        </div>
+
+        <div id="home__branding--bottom">
+            <div className="home__branding--bottom">
+                <Image src={box}   className="home__branding--bottom__image"  alt="image"/>
             </div>
-        </div>
 
-        <div className="home__branding--bottom" id="home__branding--bottom">
-            <Image src={box}   className="home__branding--bottom__image"  alt="image"/>
-        </div>
+            <div className="home__request">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="home__request__container">
+                                <h2 className="home__request__container__title">REQUEST A QUOTE</h2>
+                                <div className="home__request__container__form">
+                                    <form >
+                                        <div  className="home__request__container__form__main">
+                                            <div className="home__request__container__form__main__left">
+                                                <input id="email" type="email"  placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
 
-        <div className="home__request">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="home__request__container">
-                            <h2 className="home__request__container__title">REQUEST A QUOTE</h2>
-                            <div className="home__request__container__form">
-                                <form >
-                                    <div  className="home__request__container__form__main">
-                                        <div className="home__request__container__form__main__left">
-                                            <input id="email" type="email"  placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
-
-                                            <div  className="home__request__container__form__main__left__row">
-                                                <div className="home__request__container__form__main__left__row__quote">
-                                                    <textarea name="" id="" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
-                                                </div>
-                                                <div className="home__request__container__form__main__left__row__files">
-                                                    <ul  className="home__request__container__form__main__left__row__files__list">
-                                                        <li className="home__request__container__form__main__left__row__files__list__item">
-                                                            <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={pngFile} alt="pdf"/><span>attached file name</span></p>
-                                                        </li>
-                                                        <li className="home__request__container__form__main__left__row__files__list__item">
-                                                            <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={gifFile} alt="gif"/><span>attached file name</span></p>
-                                                        </li>
-                                                        <li className="home__request__container__form__main__left__row__files__list__item">
-                                                            <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={jpgFile} alt="jpg"/><span>attached file name</span></p>
-                                                        </li>
-                                                        <li className="home__request__container__form__main__left__row__files__list__item">
-                                                            <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={pdfFile} alt="pdf"/><span>attached file name</span></p>                                                          
-                                                        </li>
-                                                    </ul>
+                                                <div  className="home__request__container__form__main__left__row">
+                                                    <div className="home__request__container__form__main__left__row__quote">
+                                                        <textarea name="" id="" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
+                                                    </div>
+                                                    <div className="home__request__container__form__main__left__row__files">
+                                                        <ul  className="home__request__container__form__main__left__row__files__list">
+                                                            <li className="home__request__container__form__main__left__row__files__list__item">
+                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={pngFile} alt="pdf"/><span>attached file name</span></p>
+                                                            </li>
+                                                            <li className="home__request__container__form__main__left__row__files__list__item">
+                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={gifFile} alt="gif"/><span>attached file name</span></p>
+                                                            </li>
+                                                            <li className="home__request__container__form__main__left__row__files__list__item">
+                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={jpgFile} alt="jpg"/><span>attached file name</span></p>
+                                                            </li>
+                                                            <li className="home__request__container__form__main__left__row__files__list__item">
+                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={pdfFile} alt="pdf"/><span>attached file name</span></p>                                                          
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="home__request__container__form__main__right">
-                                            <div className="home__request__container__form__main__right__file">
-                                                <label className="home__request__container__form__main__right__file__label" htmlFor="attach">attach 
-                                                a file</label>
-                                                <input className="home__request__container__form__main__right__file__input" type="file" id="attach" name="attach" accept=".jpg, .jpeg, .png, .gif, .pdf"/>
+                                            <div className="home__request__container__form__main__right">
+                                                <div className="home__request__container__form__main__right__file">
+                                                    <label className="home__request__container__form__main__right__file__label" htmlFor="attach">attach 
+                                                    a file</label>
+                                                    <input className="home__request__container__form__main__right__file__input" type="file" id="attach" name="attach" accept=".jpg, .jpeg, .png, .gif, .pdf"/>
+                                                </div>
+                                                
+                                                <input className="home__request__container__form__main__right__submit" type="submit" value="send"/>
                                             </div>
                                             
-                                            <input className="home__request__container__form__main__right__submit" type="submit" value="send"/>
                                         </div>
                                         
-                                    </div>
-                                    
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div className="scroll--arrow">
-                <HashLink smooth to="/#contact" speed="9000">
-                    <Image src={arrow} />
-                </HashLink>
-            </div>
-
         </div>
 
         <div className="home__contact" id="contact">
@@ -223,9 +205,52 @@ function Home (props) {
                     </div>
                 </div>
             </div>
+        </div>
+        <div className="home__menu">
+            <ul className="home__menu__content">
+                <li className="home__menu__content__item active">
+                    {/* <HashLink smooth to="/#home__banner" className="home__menu__content__item__link">                        
+                    </HashLink> */}
+                    <Link activeClass="active" to="home__banner" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
 
+                    </Link>
+                </li>
+                <li className="home__menu__content__item" >
+                    {/* <HashLink smooth to="/#home__design" className="home__menu__content__item__link">                        
+                    </HashLink> */}
+                    <Link activeClass="active" to="home__design" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
 
+                    </Link>
+                </li>
+                <li className="home__menu__content__item" >
+                    {/* <HashLink smooth to="/#home__drawings" className="home__menu__content__item__link">                        
+                    </HashLink> */}
+                    <Link activeClass="active" to="home__drawings" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
 
+                    </Link>
+                </li>
+                <li className="home__menu__content__item">
+                    {/* <HashLink smooth to="/#home__branding" className="home__menu__content__item__link">                        
+                    </HashLink> */}
+                    <Link activeClass="active" to="home__branding" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+
+                    </Link>
+                </li>
+                <li className="home__menu__content__item">
+                    {/* <HashLink smooth to="/#home__branding--bottom" className="home__menu__content__item__link">                        
+                    </HashLink> */}
+                    <Link activeClass="active" to="home__branding--bottom" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+
+                    </Link>
+                </li>
+                <li className="home__menu__content__item">
+                    {/* <HashLink smooth to="/#contact" className="home__menu__content__item__link">                        
+                    </HashLink> */}
+                    <Link activeClass="active" to="contact" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+
+                    </Link>
+                </li>
+            </ul>
         </div>
     </div>
     )

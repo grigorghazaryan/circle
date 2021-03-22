@@ -44,13 +44,13 @@
     &__banner{
         overflow: hidden;
         width: 100%;
-        height: 921px;
+        height: 940px;
         position: relative;
         margin-bottom: 5px;
         padding-top: 100px;
         video{
             width: 100%;
-            height: 921px;
+            height: 940px;
             object-fit: cover;
         }
         &::after{
@@ -262,7 +262,7 @@
 
     }
     &__request{
-        padding-top: 120px;
+        padding-top: 50px;
         padding-bottom: 101px;
         position: relative;
         &__container{
@@ -325,7 +325,8 @@
                                     color: #727272;
                                     font-family: $fontRegular;
                                     font-size: 24px;
-                                    max-height: 305px;
+                                    // max-height: 305px;
+                                    max-height: 155px;
                                     resize: none;
                                     &::placeholder {
                                         color: #C3C2C3;
@@ -510,7 +511,8 @@
                             color: #727272;
                             font-family: $fontRegular;
                             font-size: 16px;
-                            height: 333px;
+                            // height: 333px;
+                            height: 150px;
                             resize: none;
                             &::placeholder {
                                 color: #C3C2C3;
@@ -559,6 +561,26 @@
 
 
 
+}
+@media only screen and (min-width: 1200px){
+    .home{
+        &__branding{
+            &__top{
+                &__info{
+                    &__link{
+                        font-size: 25px;
+                        padding: 44px 42px;
+                        width: 150px;
+                        height: 150px;
+                        bottom: 290px!important;
+                    }
+                    &__title{
+                        margin-bottom: 290px!important;
+                    }
+                }
+            }
+        }
+    }
 }
 @media only screen and (max-width: 1799px){
     .home{
@@ -618,6 +640,9 @@
                         width: 150px;
                         height: 150px;
                         bottom: 20px;
+                    }
+                    &__title{
+                        margin-bottom: 20px;
                     }
                 }
             }
@@ -700,7 +725,7 @@
             }
         }
         &__request{
-            padding-top: 60px;
+            // padding-top: 60px;
             padding-bottom: 50px;
             &__container{
                 &__title{
@@ -741,12 +766,16 @@
     }
     .home{
         &__request{
+            &>.container{
+                max-width: 100%;
+            }
             &__container{
                 &__form{
-                    padding-left: 40px;
-                    padding-right: 40px;
+                    padding-left: 0px;
+                    padding-right: 0px;
                     background-size: 36px;
                     background-position-y: 63%;
+                    background-image: none;
                     &__main{
                         flex-direction: column;
                         &__left{
@@ -838,7 +867,5 @@
                 }
             }
         }
-
-
     }
 }

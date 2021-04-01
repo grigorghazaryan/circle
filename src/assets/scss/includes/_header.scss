@@ -1,6 +1,9 @@
+#header{
+    z-index: 999;
+}
 .mobile--menu{
     background-color: #FFFFFF;
-    z-index: 3;
+    z-index: 999;
     &.header-type-default{
         position: absolute;
         top: 0;

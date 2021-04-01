@@ -34,9 +34,13 @@
   }
 }
 
+#header {
+  z-index: 999;
+}
+
 .mobile--menu {
   background-color: #FFFFFF;
-  z-index: 3;
+  z-index: 999;
 }
 
 .mobile--menu.header-type-default {
@@ -421,6 +425,7 @@
   width: 100%;
   height: 940px;
   object-fit: cover;
+  z-index: 97;
 }
 
 .home__banner::after {
@@ -433,6 +438,7 @@
   height: 19px;
   background-repeat: no-repeat;
   background-size: 100%;
+  z-index: 99;
 }
 
 .home__banner .scroll--arrow {

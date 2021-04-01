@@ -22,16 +22,42 @@ function Home (props) {
     //       tablinks[i].className = tablinks[i].className.replace(" active", "");
     //     }
     // }
+    // function scrollTo() {
+    //     scroll.scrollTo(100);
+    // }
+    // let scroll    = Scroll.animateScroll;
+    // function scrollToElement(elementClass){
+    //     console.log(elementClass);
+    //   scroll.scrollTo(elementClass, {
+    //     duration: 3000,
+    //     delay: 1000,
+    //     smooth: true,
+    //     // containerId: 'ContainerElementID',
+    //     // offset: 500,
+    //   })
+    // }
+    // let scroll    = animateScroll.scroller;
+    // var scroll    = Scroll.animateScroll;
+    // const scrollToEl = () => {
+    //     console.log('clicked');
+    //     scroll.scrollTo('myScrollToElement',{
+    //         duration: 8000,
+    //         // delay: 0,
+    //         spy:true,
+    //         smooth: true
+    //     });
+    // }
 
     return (
     <div className="home">
+         
         <div className="home__banner" id="home__banner">
-            <video autoPlay muted loop>
+          <video autoPlay muted loop>
                 <source src={bannerVideo} type="video/mp4"/>
 
             </video>
             
-        </div>
+        </div> 
         <div className="home__design" id="home__design">
             <div className="conntainer-fluid ">
                 <div className="row m-0">
@@ -58,7 +84,6 @@ function Home (props) {
 
 
         </div>
-
         <div className="home__drawings" id="home__drawings">
             <div className="conntainer-fluid ">
                 <div className="row m-0">
@@ -209,44 +234,32 @@ function Home (props) {
         <div className="home__menu">
             <ul className="home__menu__content">
                 <li className="home__menu__content__item active">
-                    {/* <HashLink smooth to="/#home__banner" className="home__menu__content__item__link">                        
-                    </HashLink> */}
-                    <Link activeClass="active" to="home__banner" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+                    <Link activeClass="active" to="home__banner" spy={true} smooth='easeInQuart' duration={500} className="home__menu__content__item__link">
 
                     </Link>
                 </li>
                 <li className="home__menu__content__item" >
-                    {/* <HashLink smooth to="/#home__design" className="home__menu__content__item__link">                        
-                    </HashLink> */}
-                    <Link activeClass="active" to="home__design" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+                    <Link activeClass="active" to="home__design" spy={true} smooth='easeInQuart' duration={500} className="home__menu__content__item__link">
 
                     </Link>
                 </li>
                 <li className="home__menu__content__item" >
-                    {/* <HashLink smooth to="/#home__drawings" className="home__menu__content__item__link">                        
-                    </HashLink> */}
-                    <Link activeClass="active" to="home__drawings" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+                    <Link activeClass="active" to="home__drawings" spy={true} smooth='easeInQuart' duration={500} className="home__menu__content__item__link">
 
                     </Link>
                 </li>
                 <li className="home__menu__content__item">
-                    {/* <HashLink smooth to="/#home__branding" className="home__menu__content__item__link">                        
-                    </HashLink> */}
-                    <Link activeClass="active" to="home__branding" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+                    <Link activeClass="active" to="home__branding" spy={true} smooth='easeInQuart' duration={500} className="home__menu__content__item__link">
 
                     </Link>
                 </li>
                 <li className="home__menu__content__item">
-                    {/* <HashLink smooth to="/#home__branding--bottom" className="home__menu__content__item__link">                        
-                    </HashLink> */}
-                    <Link activeClass="active" to="home__branding--bottom" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+                    <Link activeClass="active" to="home__branding--bottom" spy={true} smooth='easeInQuart' duration={500} className="home__menu__content__item__link">
 
                     </Link>
                 </li>
                 <li className="home__menu__content__item">
-                    {/* <HashLink smooth to="/#contact" className="home__menu__content__item__link">                        
-                    </HashLink> */}
-                    <Link activeClass="active" to="contact" spy={true} smooth={true} duration={500} className="home__menu__content__item__link">
+                    <Link activeClass="active" to="contact" spy={true} smooth='easeInQuart' duration={500} className="home__menu__content__item__link">
 
                     </Link>
                 </li>

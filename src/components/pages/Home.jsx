@@ -16,38 +16,6 @@ import { Link } from 'react-scroll'
 
 function Home (props) {
 
-    // const handleClick = (i) => {
-    //     tablinks = document.getElementsByClassName("home__what--we--do__tabs__steps__item");
-    //     for (i = 0; i < tablinks.length; i++) {
-    //       tablinks[i].className = tablinks[i].className.replace(" active", "");
-    //     }
-    // }
-    // function scrollTo() {
-    //     scroll.scrollTo(100);
-    // }
-    // let scroll    = Scroll.animateScroll;
-    // function scrollToElement(elementClass){
-    //     console.log(elementClass);
-    //   scroll.scrollTo(elementClass, {
-    //     duration: 3000,
-    //     delay: 1000,
-    //     smooth: true,
-    //     // containerId: 'ContainerElementID',
-    //     // offset: 500,
-    //   })
-    // }
-    // let scroll    = animateScroll.scroller;
-    // var scroll    = Scroll.animateScroll;
-    // const scrollToEl = () => {
-    //     console.log('clicked');
-    //     scroll.scrollTo('myScrollToElement',{
-    //         duration: 8000,
-    //         // delay: 0,
-    //         spy:true,
-    //         smooth: true
-    //     });
-    // }
-
     return (
     <div className="home">
          

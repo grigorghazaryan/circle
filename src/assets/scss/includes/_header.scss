@@ -18,9 +18,9 @@
             // max-height: 155px;
             // padding-top: 41px;
             // padding-bottom: 32px;
-            max-height: 100px;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            max-height: 60px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         &__toggler{
             float: right;
@@ -215,7 +215,22 @@
 //             display: none;
 //     }
 // }
-
+.header--sticky{
+    .mobile--menu{
+        position: fixed;
+        background-color: rgba(255, 255, 255, 0.9);
+        &__main{
+            &__img{
+                margin-top: 10px;
+                margin-bottom: 10px;
+                max-height: 60px;
+            }
+            &__toggler{
+                margin-top: 37px
+            }
+        }
+    }
+}
 
 @media only screen and (max-width: 992px) {
     .mobile--menu{
@@ -227,9 +242,9 @@
                 }
             }
             &__img{
-                max-height: 90px;
-                padding-top: 20px;
-                padding-bottom: 20px;
+                max-height: 50px;
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
         }
         &__left{
@@ -286,23 +301,35 @@
 
 
     }
+    .header--sticky{
+        .mobile--menu{
+            &__main{
+                &__img{
+                    max-height: 50px;
+                }
+                &__toggler{
+                    margin-top: 30px
+                }
+            }
+        }
+    }
 
 
 }
 @media only screen and (max-width: 576px) {
     .mobile--menu{
-        &__main{
-            &__toggler{
-                img{
-                    height: 30px;
-                }
-            }
-            &__img{
-                max-height: 90px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
-        }
+        // &__main{
+        //     &__toggler{
+        //         img{
+        //             height: 30px;
+        //         }
+        //     }
+        //     &__img{
+        //         max-height: 90px;
+        //         padding-top: 20px;
+        //         padding-bottom: 20px;
+        //     }
+        // }
         &__left{
             &__show{
                 &__main{

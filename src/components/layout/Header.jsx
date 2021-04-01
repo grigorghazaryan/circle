@@ -18,6 +18,7 @@ function Header ( {history} ) {
     // add class to meu so on home page we have default menu and on other pages transparent menu
     const [ headerType, setHeaderType ] = useState( (window.location.pathname === "/" ) ? "default" : "absolute"  ); 
 
+    // transparant menu for all pages exept home page
     useEffect( ()=>{
         history.listen((location, action) => { 
             if ( location.pathname === "/" )
@@ -26,6 +27,22 @@ function Header ( {history} ) {
                 setHeaderType( "absolute" )
             } 
         });
+    }, []);
+    
+    // fixed menu on scroll
+    useEffect( ()=>{
+        const header = document.getElementById("header");
+        const sticky = header.offsetTop;
+        const scrollCallBack = window.addEventListener("scroll", () => {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("header--sticky");
+        } else {
+            header.classList.remove("header--sticky");
+        }
+        });
+        return () => {
+        window.removeEventListener("scroll", scrollCallBack);
+        };
     }, []);
 
     function onClickShowMobileMenu() {

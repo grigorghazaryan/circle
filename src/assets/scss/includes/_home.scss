@@ -13,6 +13,7 @@
         position: fixed;
         bottom: 60px;
         right: 20px;
+        z-index: 100;
         &__content{
             list-style-type: none;
             padding-left: 0;

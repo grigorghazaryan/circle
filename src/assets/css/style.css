@@ -18,6 +18,10 @@
   src: url(../font/Avenir-Oblique.ttf);
 }
 
+body {
+  background-color: #fff;
+}
+
 .overflow--hidden {
   overflow: hidden;
 }
@@ -2280,6 +2284,64 @@
 @media only screen and (max-width: 615px) {
   .shop__content__tabs {
     flex-direction: column;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #fff;
+  }
+  .header--sticky .mobile--menu {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .mobile--menu.header-type-default {
+    background-color: #ffffff;
+  }
+  .mobile--menu.header-type-absolute {
+    background-color: transparent;
+  }
+  .home__banner {
+    background-color: #ffffff;
+  }
+  .home__design__info {
+    background-color: #ffffff;
+  }
+  .home__design__info__title {
+    color: #08A4AA;
+    color: #0F467B;
+  }
+  .home__design__info__text {
+    color: #C3C2C3;
+  }
+  .home__design__info__link {
+    background-color: #08A4AA;
+  }
+  .home__drawings__left {
+    background-color: #ffffff;
+  }
+  .home__drawings__left__info__title {
+    color: #C3C2C3;
+  }
+  .home__drawings__left__info__title span {
+    color: #0F467B;
+  }
+  .home__drawings__left__info__text {
+    color: #C3C2C3;
+  }
+  .home__drawings__left__info__link {
+    background-color: #0F467B;
+  }
+  .home__branding__top__info__link {
+    background-color: #F9B436;
+  }
+  .home__branding__top__info__link:hover {
+    background-color: #F3BC57;
+  }
+  .home__request {
+    background-color: #ffffff;
+  }
+  .home__request__container__title {
+    color: #0F467B;
   }
 }
 /*# sourceMappingURL=style.css.map */

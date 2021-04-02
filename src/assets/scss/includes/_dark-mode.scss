@@ -1,0 +1,77 @@
+@media ( prefers-color-scheme : dark) {
+    body{
+        background-color: #fff;
+    }
+    .header--sticky {
+        .mobile--menu{
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    }
+    .mobile--menu{
+        &.header-type-default{
+            background-color: #ffffff;
+        }
+        &.header-type-absolute{
+            background-color: transparent;
+        }
+    }
+    .home{
+        &__banner{
+            background-color: #ffffff;
+        }
+        &__design{
+            &__info{
+                background-color: #ffffff;
+                &__title{
+                    color: #08A4AA;
+                    color: #0F467B;
+                }
+                &__text{
+                    color: #C3C2C3;
+                }
+                &__link{
+                    background-color: #08A4AA;
+                }
+            }            
+        }
+        &__drawings{
+            &__left{
+                background-color: #ffffff;
+                &__info{
+                    &__title{
+                        color: #C3C2C3;
+                        span{
+                            color: #0F467B;
+                        }
+                    }
+                    &__text{
+                        color: #C3C2C3;
+                    }
+                    &__link{
+                        background-color: #0F467B;
+                    }
+                }
+            }
+        }
+        &__branding{
+            &__top{
+                &__info{
+                    &__link{
+                        background-color: #F9B436;
+                        &:hover{
+                            background-color: #F3BC57;
+                        }
+                    }
+                }
+            }
+        }
+        &__request{
+            background-color: #ffffff;
+            &__container{
+                &__title{
+                    color: #0F467B;
+                }
+            }
+        }
+    }
+}

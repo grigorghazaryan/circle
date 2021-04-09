@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
@@ -13,18 +13,88 @@ import pdfFile from '../../assets/img/Home/icons/pdf-file.svg';
 import bannerBg from '../../assets/img/Home/contact-us-image.png';
 import arrow from '../../assets/img/Home/icons/arrow.svg';
 import { Link } from 'react-scroll'
-
+import constants from "../../helpers/constants";
 function Home (props) {
 
+    const home_items_url = `${constants.urls.API}/getHomePageIcons`;
+    const request_a_quote_url = `${constants.urls.API}/getRequestAQuoteImage`;
+    const contact_url = `${constants.urls.API}/getContactImage`;
+    const [ data, setData ] = useState(null);
+    const [ request_data, setReqData ] = useState(null);
+    const [ contact_data, setContactData ] = useState(null);
+    const [ isLoaded, setIsLoaded ] = useState(false);
+
+    useEffect(()=>{
+        Promise.all([
+            fetch(home_items_url, {
+                method: `GET`
+            }),
+            fetch(request_a_quote_url, {
+                method: `GET`
+            }),
+            fetch(contact_url, {
+                method: `GET`
+            }),
+
+        ]).then( res =>{
+            return Promise.all(
+                res.map( response => {
+                    return response.json()
+                })
+            )
+        }) .then( result =>{
+            let newState = {};
+            let newReqState = {};
+            let newContactState = {};
+            let newIsloadedState = {};
+            result.forEach( ( el,i ) => {
+                if( el.success ) {
+                    switch (i) {
+                        case 0:
+                            newState = el.home_page;
+                            break;
+                        case 1:
+                            newReqState = el.request_image;
+                            break;
+                        case 2:
+                            newContactState = el.contact_image;
+                            break;
+
+                    }
+                }
+            })
+            setData( newState );
+            setReqData( newReqState );
+            setContactData( newContactState );
+            setIsLoaded(newIsloadedState);
+        })
+            .catch( err => {
+                console.log(err);
+
+                /* scroll animation end */
+            })
+    },[props.match.params.id]);
+    console.log('test--',request_data && request_data[0].id);
+    if (!isLoaded) {
+        return <div className="loader">
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>
+    }
     return (
     <div className="home">
          
         <div className="home__banner" id="home__banner">
-          <video autoPlay muted loop>
-                <source src={bannerVideo} type="video/mp4"/>
 
-            </video>
-            
+                    <video autoPlay muted loop>
+
+                        <source src={constants.urls.UPLOAD + data?.type1.path} type="video/mp4"/>
+
+                    </video>
+
+            })}
+
         </div> 
         <div className="home__design" id="home__design">
             <div className="conntainer-fluid ">
@@ -32,7 +102,7 @@ function Home (props) {
                     <div className="col-lg-6 col-12 p-0 order-12 order-lg-1">
                         <div className="home__design__video">
                             <video autoPlay muted loop>
-                                <source src={bannerVideo} type="video/mp4"/>
+                                <source src={constants.urls.UPLOAD + data?.type2.path} type="video/mp4"/>
 
                             </video>
                         </div>
@@ -42,8 +112,8 @@ function Home (props) {
                             <Image src={Technicaldesign}  className="home__design__info__icon"  alt="TECHNICAL DESIGN icon"/>
 
                             <h1 className="home__design__info__title">TECHNICAL<span>DESIGN</span></h1>
-                            <p className="home__design__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
-                            <NavLink to="/services" className="home__design__info__link">{`read 
+                            <p className="home__design__info__text">{data?.type2.description}</p>
+                            <NavLink to={data?.type2.link} className="home__design__info__link">{`read 
                             more`}</NavLink>
                         </div>
                     </div>
@@ -60,8 +130,8 @@ function Home (props) {
                             <Image src={Technicaldrawings}  className="home__drawings__left__info__icon"  alt="TECHNICAL DRAWINGS icon"/>
 
                             <h1 className="home__drawings__left__info__title">TECHNICAL<span>DRAWINGS</span></h1>
-                            <p className="home__drawings__left__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in </p>
-                            <NavLink to="/services" className="home__drawings__left__info__link">{`read 
+                            <p className="home__drawings__left__info__text">{data?.type3.description}</p>
+                            <NavLink to={data?.type2.link} className="home__drawings__left__info__link">{`read 
                             more`}</NavLink>
                         </div>
 
@@ -69,7 +139,7 @@ function Home (props) {
                     <div className="col-lg-6 col-12 p-0">
                         <div className="home__drawings__video">
                             <video autoPlay muted loop>
-                                <source src={bannerVideo} type="video/mp4"/>
+                                <source src={constants.urls.UPLOAD + data?.type3.path} type="video/mp4"/>
 
                             </video>
                         </div>
@@ -87,13 +157,13 @@ function Home (props) {
                         <div className="home__branding__top">
                             <div  className="home__branding__top__video">
                                 <video autoPlay muted loop>
-                                    <source src={bannerVideo} type="video/mp4"/>
+                                    <source src={constants.urls.UPLOAD + data?.type4.path} type="video/mp4"/>
 
                                 </video>
                             </div>
                             <div  className="home__branding__top__info">
                                 <h2 className="home__branding__top__info__title">BRANDING</h2>
-                                <NavLink to="/services"  className="home__branding__top__info__link">{`read 
+                                <NavLink to={data?.type4.path}  className="home__branding__top__info__link">{`read 
                                 more`}</NavLink>
                             </div>
                         </div>
@@ -106,7 +176,7 @@ function Home (props) {
 
         <div id="home__branding--bottom">
             <div className="home__branding--bottom">
-                <Image src={box}   className="home__branding--bottom__image"  alt="image"/>
+                <Image src={request_data && constants.urls.UPLOAD + request_data[0].path}   className="home__branding--bottom__image"  alt="image"/>
             </div>
 
             <div className="home__request">
@@ -165,7 +235,7 @@ function Home (props) {
         </div>
 
         <div className="home__contact" id="contact">
-            <div className="home__contact__title"  style={{ backgroundImage: `url(${bannerBg})` }}>
+            <div className="home__contact__title"  style={{ backgroundImage: `url(${contact_data && constants.urls.UPLOAD + contact_data[0].path})` }}>
                 <h2 className="home__contact__title__text">CONTACT US</h2>
             </div>
 

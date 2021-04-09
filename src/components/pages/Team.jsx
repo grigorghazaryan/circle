@@ -1,96 +1,138 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { Image } from 'react-bootstrap';
 import bannerBg from '../../assets/img/Team/bannerBg.png';
 import employee from '../../assets/img/Team/employee.png';
 import pngFile from '../../assets/img/Home/icons/png-file.svg';
 import gifFile from '../../assets/img/Home/icons/gif-file.svg';
 import box from '../../assets/img/Team/box.png';
+import constants from "../../helpers/constants";
 
 function Team (props) {
+    const our_team_main_url = `${constants.urls.API}/getOurTeamImage`;
+    const our_team_url = `${constants.urls.API}/getOurTeam`;
+    const contact_url = `${constants.urls.API}/getWorksWithUsImage`;
+    const [ data, setData ] = useState(null);
+    const [ request_data, setReqData ] = useState(null);
+    const [ contact_data, setContactData ] = useState(null);
+    const [ isLoaded, setIsLoaded ] = useState(false);
 
+    useEffect(()=>{
+        Promise.all([
+            fetch(our_team_main_url, {
+                method: `GET`
+            }),
+            fetch(our_team_url, {
+                method: `GET`
+            }),
+            fetch(contact_url, {
+                method: `GET`
+            }),
+
+        ]).then( res =>{
+            return Promise.all(
+                res.map( response => {
+                    return response.json()
+                })
+            )
+        }) .then( result =>{
+            let newState = {};
+            let newReqState = {};
+            let newContactState = {};
+            let newIsloadedState = {};
+            result.forEach( ( el,i ) => {
+                if( el.success ) {
+                    switch (i) {
+                        case 0:
+                            newState = el.our_team_image;
+                            break;
+                        case 1:
+                            newReqState = el.our_team;
+                            break;
+                        case 2:
+                            newContactState = el.work_with_us_image;
+                            break;
+
+                    }
+                }
+            })
+            setData( newState );
+            setReqData( newReqState );
+            setContactData( newContactState );
+            setIsLoaded(newIsloadedState);
+        })
+            .catch( err => {
+                console.log(err);
+
+                /* scroll animation end */
+            })
+    },[props.match.params.id]);
+    const imgOrderClass = (index) =>{
+        if(index%2 != 0){
+            return "order-1 order-md-12";
+        }else{
+            return "";
+        }
+    }
+    const infoOrderClass = (index) =>{
+        if(index%2 != 0){
+            return "order-12 order-md-1";
+        }else{
+            return "";
+        }
+    }
+    console.log('test--',request_data && request_data[0].id);
+    if (!isLoaded) {
+        return <div className="loader">
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>
+    }
     return (
         <div className="team">
-            <div className="team__banner" style={{ backgroundImage: `url(${bannerBg})` }}>
+            <div className="team__banner" style={{ backgroundImage: `url(${data && constants.urls.UPLOAD + data[0].path})` }}>
                 <h1 className="team__banner__title">
                     OUR TEAM
                 </h1>
             </div>
             <div className="team__employee">
-                <div className="container container--middle">                
-                    <div className="row team__employee__row">
-                        <div className="col-md-6 col-12">
-                            <div className="team__employee__row__image">
-                                <Image src={employee} alt="Employee"/>
+                <div className="container container--middle">
+                    {request_data.map(function(item, i) {
+                       return <div key={"product-list-" + item.id} className="row team__employee__row">
+                            <div className={`col-md-6 col-12 ${imgOrderClass(i)}`}>
+                                <div className="team__employee__row__image">
+                                    <Image src={constants.urls.UPLOAD +item.path} alt="Employee"/>
+                                </div>
+                            </div>
+                            <div className={`col-md-6 col-12 ${infoOrderClass(i)}`}>
+                                <div className="team__employee__row__info">
+                                    <h2 className="team__employee__row__info__title">{item.name}  {item.surname}</h2>
+                                    <h3 className="team__employee__row__info__position">{item.position}</h3>
+                                    <p className="team__employee__row__info__text">{item.description}</p>
+                                </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-12">
-                            <div className="team__employee__row__info">
-                                <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>
-                                <h3 className="team__employee__row__info__position">Position</h3>
-                                <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row team__employee__row">
-                        <div className="col-md-6 col-12 order-12 order-md-1">                            
-                            <div className="team__employee__row__info">
-                                <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>
-                                <h3 className="team__employee__row__info__position">Position</h3>
-                                <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-12 order-1 order-md-12">
-                            <div className="team__employee__row__image team__employee__row__image--right">
-                                <Image src={employee} alt="Employee"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row team__employee__row">
-                        <div className="col-md-6 col-12">
-                            <div className="team__employee__row__image">
-                                <Image src={employee} alt="Employee"/>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-12">
-                            <div className="team__employee__row__info">
-                                <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>
-                                <h3 className="team__employee__row__info__position">Position</h3>
-                                <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row team__employee__row">
-                        <div className="col-md-6 col-12 order-12 order-md-1">                            
-                            <div className="team__employee__row__info">
-                                <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>
-                                <h3 className="team__employee__row__info__position">Position</h3>
-                                <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-12 order-1 order-md-12">
-                            <div className="team__employee__row__image team__employee__row__image--right">
-                                <Image src={employee} alt="Employee"/>
-                            </div>
-                        </div>
-                    </div>                    
-                    <div className="row team__employee__row">
-                        <div className="col-md-6 col-12">
-                            <div className="team__employee__row__image">
-                                <Image src={employee} alt="Employee"/>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-12">
-                            <div className="team__employee__row__info">
-                                <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>
-                                <h3 className="team__employee__row__info__position">Position</h3>
-                                <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
-                            </div>
-                        </div>
-                    </div>
+                    })}
+                    {/*<div className="row team__employee__row">*/}
+                    {/*    <div className="col-md-6 col-12 order-12 order-md-1">                            */}
+                    {/*        <div className="team__employee__row__info">*/}
+                    {/*            <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>*/}
+                    {/*            <h3 className="team__employee__row__info__position">Position</h3>*/}
+                    {/*            <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="col-md-6 col-12 order-1 order-md-12">*/}
+                    {/*        <div className="team__employee__row__image team__employee__row__image--right">*/}
+                    {/*            <Image src={employee} alt="Employee"/>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+
                 </div>
             </div>                
             <div className="team__work__top">
-                    <Image src={box} alt="TECHNICAL DESIGN icon" className="team__work__top__image"/>
+                    <Image src={contact_data && constants.urls.UPLOAD + data[0].path} alt="TECHNICAL DESIGN icon" className="team__work__top__image"/>
             </div>
             <div className="team__work">
 

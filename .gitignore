@@ -9,7 +9,7 @@
 /coverage
 
 # production
-
+/src/helpers/constants.js
 # misc
 .DS_Store
 .env.local

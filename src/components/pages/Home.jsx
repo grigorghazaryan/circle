@@ -14,11 +14,15 @@ import bannerBg from '../../assets/img/Home/contact-us-image.png';
 import arrow from '../../assets/img/Home/icons/arrow.svg';
 import { Link } from 'react-scroll'
 import constants from "../../helpers/constants";
+
 function Home (props) {
 
     const home_items_url = `${constants.urls.API}/getHomePageIcons`;
     const request_a_quote_url = `${constants.urls.API}/getRequestAQuoteImage`;
     const contact_url = `${constants.urls.API}/getContactImage`;
+    const contact_email = `${constants.urls.API}/AddContact`;
+    const request_email = `${constants.urls.API}/AddRequestAQuote`;
+
     const [ data, setData ] = useState(null);
     const [ request_data, setReqData ] = useState(null);
     const [ contact_data, setContactData ] = useState(null);
@@ -74,7 +78,43 @@ function Home (props) {
                 /* scroll animation end */
             })
     },[props.match.params.id]);
-    console.log('test--',request_data && request_data[0].id);
+
+    const contactSubmit= ( e ) => {
+        const formData = new FormData();
+
+        fetch(contact_email, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Success:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    const quoteSubmit= ( e ) => {
+        const formData = new FormData();
+        const photos = document.querySelector('input[type="file"][multiple]');
+
+        formData.append('title', 'My Vegas Vacation');
+        for (let i = 0; i < photos.files.length; i++) {
+            formData.append('photos', photos.files[i]);
+        }
+
+        fetch(request_email, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Success:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
     if (!isLoaded) {
         return <div className="loader">
             <div className="spinner-border" role="status">
@@ -131,7 +171,7 @@ function Home (props) {
 
                             <h1 className="home__drawings__left__info__title">TECHNICAL<span>DRAWINGS</span></h1>
                             <p className="home__drawings__left__info__text">{data?.type3.description}</p>
-                            <NavLink to={data?.type2.link} className="home__drawings__left__info__link">{`read 
+                            <NavLink to={data?.type3.link} className="home__drawings__left__info__link">{`read 
                             more`}</NavLink>
                         </div>
 
@@ -163,7 +203,7 @@ function Home (props) {
                             </div>
                             <div  className="home__branding__top__info">
                                 <h2 className="home__branding__top__info__title">BRANDING</h2>
-                                <NavLink to={data?.type4.path}  className="home__branding__top__info__link">{`read 
+                                <NavLink to={data?.type4.link}  className="home__branding__top__info__link">{`read 
                                 more`}</NavLink>
                             </div>
                         </div>
@@ -186,14 +226,14 @@ function Home (props) {
                             <div className="home__request__container">
                                 <h2 className="home__request__container__title">REQUEST A QUOTE</h2>
                                 <div className="home__request__container__form">
-                                    <form >
+                                    <form method="POST" action={request_email} enctype="multipart/form-data">
                                         <div  className="home__request__container__form__main">
                                             <div className="home__request__container__form__main__left">
-                                                <input id="email" type="email"  placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
-
+                                                <input id="email" type="email" name="email" required placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
+                                                <input id="quote" type="hidden" name="quote"  value="quote"/>
                                                 <div  className="home__request__container__form__main__left__row">
                                                     <div className="home__request__container__form__main__left__row__quote">
-                                                        <textarea name="" id="" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
+                                                        <textarea name="message" required id="" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="home__request__container__form__main__left__row__files">
                                                         <ul  className="home__request__container__form__main__left__row__files__list">
@@ -217,10 +257,11 @@ function Home (props) {
                                                 <div className="home__request__container__form__main__right__file">
                                                     <label className="home__request__container__form__main__right__file__label" htmlFor="attach">attach 
                                                     a file</label>
-                                                    <input className="home__request__container__form__main__right__file__input" type="file" id="attach" name="attach" accept=".jpg, .jpeg, .png, .gif, .pdf"/>
+                                                    <input className="home__request__container__form__main__right__file__input" type="file" id="attach" multiple name="images[]" accept=".jpg, .jpeg, .png, .gif, .pdf"/>
                                                 </div>
                                                 
-                                                <input className="home__request__container__form__main__right__submit" type="submit" value="send"/>
+                                                <button onClick={quoteSubmit} className="home__request__container__form__main__right__submit" type="submit" >send</button>
+
                                             </div>
                                             
                                         </div>
@@ -249,17 +290,19 @@ function Home (props) {
                     </div>
                     <div className="col-lg-6 col-12 p-0 order-1 order-lg-12">
                         <div className="home__contact__form">
-                            <form >
+                            <form method="POST" action={contact_email}   >
+                                {/*ref={this.contactFormRef}*/}
                                 <div  className="home__contact__form__main">
-                                        <input id="name" type="text"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
+                                        <input id="name" required type="text" name="email"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
+                                        <input id="contact" type="hidden" name="contact"  value="contact"/>
 
                                         <div  className="home__contact__form__main__row">
                                             <div className="home__contact__form__main__row__textarea">
                                                 <label className="home__contact__form__main__row__textarea__label" htmlFor="message">Message</label>
-                                                <textarea name="message" id="message" cols="30" rows="8" placeholder="Write your message here"  className="home__contact__form__main__row__textarea__main"></textarea>
+                                                <textarea name="message" required id="message" cols="30" rows="8" placeholder="Write your message here"  className="home__contact__form__main__row__textarea__main"></textarea>
                                             </div>
                                         </div>                                          
-                                        <input className="home__contact__form__main__submit" type="submit" value="send"/>
+                                        <button onClick={contactSubmit} className="home__contact__form__main__submit" >Send</button>
                                         
                                 </div>
                                     

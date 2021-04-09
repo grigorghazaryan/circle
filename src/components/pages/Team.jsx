@@ -11,6 +11,8 @@ function Team (props) {
     const our_team_main_url = `${constants.urls.API}/getOurTeamImage`;
     const our_team_url = `${constants.urls.API}/getOurTeam`;
     const contact_url = `${constants.urls.API}/getWorksWithUsImage`;
+    const work_email = `${constants.urls.API}/AddWorkWithUs`;
+
     const [ data, setData ] = useState(null);
     const [ request_data, setReqData ] = useState(null);
     const [ contact_data, setContactData ] = useState(null);
@@ -80,13 +82,33 @@ function Team (props) {
             return "";
         }
     }
-    console.log('test--',request_data && request_data[0].id);
     if (!isLoaded) {
         return <div className="loader">
             <div className="spinner-border" role="status">
                 <span className="sr-only">Loading...</span>
             </div>
         </div>
+    }
+    const workSubmit= ( e ) => {
+        const formData = new FormData();
+        const photos = document.querySelector('input[type="file"][multiple]');
+
+        formData.append('title', 'My Vegas Vacation');
+        for (let i = 0; i < photos.files.length; i++) {
+            formData.append('photos', photos.files[i]);
+        }
+
+        fetch(work_email, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Success:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
     return (
         <div className="team">
@@ -113,22 +135,6 @@ function Team (props) {
                             </div>
                         </div>
                     })}
-                    {/*<div className="row team__employee__row">*/}
-                    {/*    <div className="col-md-6 col-12 order-12 order-md-1">                            */}
-                    {/*        <div className="team__employee__row__info">*/}
-                    {/*            <h2 className="team__employee__row__info__title">NAME SURNAMe</h2>*/}
-                    {/*            <h3 className="team__employee__row__info__position">Position</h3>*/}
-                    {/*            <p className="team__employee__row__info__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="col-md-6 col-12 order-1 order-md-12">*/}
-                    {/*        <div className="team__employee__row__image team__employee__row__image--right">*/}
-                    {/*            <Image src={employee} alt="Employee"/>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
-
                 </div>
             </div>                
             <div className="team__work__top">
@@ -142,14 +148,14 @@ function Team (props) {
                             <div className="team__work__container">
                                 <h2 className="team__work__container__title">DO YOU WANT TO WORK WITH US?</h2>
                                 <div className="team__work__container__form">
-                                    <form >
+                                    <form method="POST" action={work_email} enctype="multipart/form-data">
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">
-                                                <input id="email" type="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
+                                                <input id="email" type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
 
                                                 <div  className="team__work__container__form__main__left__row">
                                                     <div className="team__work__container__form__main__left__row__quote">
-                                                        <textarea name="" id="" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>
+                                                        <textarea name="message" required id="" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="team__work__container__form__main__left__row__files">
                                                         <ul  className="team__work__container__form__main__left__row__files__list">
@@ -168,10 +174,10 @@ function Team (props) {
                                                     <label className="team__work__container__form__main__right__file__label" htmlFor="attach">attach
                                                     your
                                                     CV*</label>
-                                                    <input className="team__work__container__form__main__right__file__input" type="file" id="attach" name="attach" accept=".jpg, .jpeg, .png, .gif, .pdf"/>
+                                                    <input className="team__work__container__form__main__right__file__input" type="file" id="attach" name="images[]" required multiple accept=".jpg, .jpeg, .png, .gif, .pdf"/>
                                                 </div>
                                                 
-                                                <input className="team__work__container__form__main__right__submit" type="submit" value="send"/>
+                                                <button onClick={workSubmit} className="team__work__container__form__main__right__submit">send </button>
                                             </div>
                                             
                                         </div>

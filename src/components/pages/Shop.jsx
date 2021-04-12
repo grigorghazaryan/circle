@@ -120,7 +120,8 @@ function Shop (props) {
                                             <NavLink to={it.link}
                                                      className="shop__content__tabs__tab__shop__content__info__details">Click
                                                 here for more details</NavLink>
-                                            <a href="#"
+                                            {/*info@circletechnicaldesign.com*/}
+                                            <a href={`mailto:lev.hambardzumyan@gmail.com?subject=${it.title}&body=Description:%20${it.description}%0A%0`}
                                                className="shop__content__tabs__tab__shop__content__info__order">order
                                                 by email</a>
                                         </div>

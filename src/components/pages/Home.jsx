@@ -230,7 +230,7 @@ function Home (props) {
                                         <div  className="home__request__container__form__main">
                                             <div className="home__request__container__form__main__left">
                                                 <input id="email" type="email" name="email" required placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
-                                                <input id="quote" type="hidden" name="quote"  value="quote"/>
+                                                <input id="quote" type="hidden" name="quote"  value="Request A Quote"/>
                                                 <div  className="home__request__container__form__main__left__row">
                                                     <div className="home__request__container__form__main__left__row__quote">
                                                         <textarea name="message" required id="" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
@@ -294,7 +294,7 @@ function Home (props) {
                                 {/*ref={this.contactFormRef}*/}
                                 <div  className="home__contact__form__main">
                                         <input id="name" required type="text" name="email"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
-                                        <input id="contact" type="hidden" name="contact"  value="contact"/>
+                                        <input id="contact" type="hidden" name="contact"  value="Contact Us"/>
 
                                         <div  className="home__contact__form__main__row">
                                             <div className="home__contact__form__main__row__textarea">

@@ -152,7 +152,7 @@ function Team (props) {
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">
                                                 <input id="email" type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
-
+                                                <input id="quote" type="hidden" name="work"  value="Work With Us"/>
                                                 <div  className="team__work__container__form__main__left__row">
                                                     <div className="team__work__container__form__main__left__row__quote">
                                                         <textarea name="message" required id="" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>

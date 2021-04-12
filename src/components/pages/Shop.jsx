@@ -116,12 +116,12 @@ function Shop (props) {
                                         <div className={`shop__content__tabs__tab__shop__content__info ${infoOrderClass(j)}`}>
                                             <h3 className="shop__content__tabs__tab__shop__content__info__title">{it.title}</h3>
                                             <p className="shop__content__tabs__tab__shop__content__info__text">{it.description}</p>
-                                            <p className="shop__content__tabs__tab__shop__content__info__price">{it.price} {it.currency}</p>
+                                            <p className="shop__content__tabs__tab__shop__content__info__price">{it.price} {it.currency.toUpperCase()}</p>
                                             <NavLink to={it.link}
                                                      className="shop__content__tabs__tab__shop__content__info__details">Click
                                                 here for more details</NavLink>
                                             {/*info@circletechnicaldesign.com*/}
-                                            <a href={`mailto:lev.hambardzumyan@gmail.com?subject=${it.title}&body=Description:%20${it.description}%0A%0`}
+                                            <a href={`mailto:info@circletechnicaldesign.com?subject=Shop:%20${it.title}&body=Title:%20${it.title}%0A%0ADescription:%20${it.description}%0A%0APrice:%20${it.price}%20${it.currency.toUpperCase()}%0A%0AImage:%20${constants.urls.UPLOAD + it.logo}`}
                                                className="shop__content__tabs__tab__shop__content__info__order">order
                                                 by email</a>
                                         </div>

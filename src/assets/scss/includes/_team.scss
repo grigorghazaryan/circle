@@ -20,6 +20,11 @@
         &__row{
             padding-top: 73px;
             padding-bottom: 87px;
+            &:nth-child(even) &{
+                &__image{
+                        text-align: right;
+                }
+            }
             &__image{                
                 &--right{
                     text-align: right;
@@ -319,7 +324,7 @@
             &__row{
                 padding-bottom: 0;
                 &__image{
-                    text-align: center;
+                    text-align: center!important;
                     margin-bottom: 30px;
                 }
             }

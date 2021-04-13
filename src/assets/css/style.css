@@ -1213,6 +1213,10 @@ body {
   padding-bottom: 87px;
 }
 
+.team__employee__row:nth-child(even) .team__employee__row__image {
+  text-align: right;
+}
+
 .team__employee__row__image--right {
   text-align: right;
 }
@@ -1493,7 +1497,7 @@ body {
     padding-bottom: 0;
   }
   .team__employee__row__image {
-    text-align: center;
+    text-align: center !important;
     margin-bottom: 30px;
   }
   .team__work__top {

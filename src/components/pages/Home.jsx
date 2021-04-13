@@ -73,14 +73,20 @@ function Home (props) {
             setIsLoaded(newIsloadedState);
         })
             .catch( err => {
-                console.log(err);
+                //console.log(err);
 
                 /* scroll animation end */
             })
     },[props.match.params.id]);
 
     const contactSubmit= ( e ) => {
+        e.preventDefault();
         const formData = new FormData();
+        const email = document.querySelector('#contact_email').value;
+        const message = document.querySelector('#contact_message').value;
+
+        formData.append('email', email);
+        formData.append('message', message);
 
         fetch(contact_email, {
             method: 'POST',
@@ -95,12 +101,18 @@ function Home (props) {
             });
     }
     const quoteSubmit= ( e ) => {
+        e.preventDefault();
+//  "proxy": "http://circle.local", pachage.json
         const formData = new FormData();
         const photos = document.querySelector('input[type="file"][multiple]');
+        const email = document.querySelector('#quote_email').value;
+        const message = document.querySelector('#quote_message').value;
 
-        formData.append('title', 'My Vegas Vacation');
+        formData.append('sent', 'Request A Quote');
+        formData.append('email', email);
+        formData.append('message', message);
         for (let i = 0; i < photos.files.length; i++) {
-            formData.append('photos', photos.files[i]);
+            formData.append('photos[]', photos.files[i]);
         }
 
         fetch(request_email, {
@@ -229,11 +241,11 @@ function Home (props) {
                                     <form method="POST" action={request_email} enctype="multipart/form-data">
                                         <div  className="home__request__container__form__main">
                                             <div className="home__request__container__form__main__left">
-                                                <input id="email" type="email" name="email" required placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
+                                                <input id="quote_email" type="email" name="email" required placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
                                                 <input id="quote" type="hidden" name="quote"  value="Request A Quote"/>
                                                 <div  className="home__request__container__form__main__left__row">
                                                     <div className="home__request__container__form__main__left__row__quote">
-                                                        <textarea name="message" required id="" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
+                                                        <textarea name="message" required id="quote_message" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="home__request__container__form__main__left__row__files">
                                                         <ul  className="home__request__container__form__main__left__row__files__list">
@@ -293,13 +305,13 @@ function Home (props) {
                             <form method="POST" action={contact_email}   >
                                 {/*ref={this.contactFormRef}*/}
                                 <div  className="home__contact__form__main">
-                                        <input id="name" required type="text" name="email"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
+                                        <input id="contact_email" required type="text" name="email"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
                                         <input id="contact" type="hidden" name="contact"  value="Contact Us"/>
 
                                         <div  className="home__contact__form__main__row">
                                             <div className="home__contact__form__main__row__textarea">
                                                 <label className="home__contact__form__main__row__textarea__label" htmlFor="message">Message</label>
-                                                <textarea name="message" required id="message" cols="30" rows="8" placeholder="Write your message here"  className="home__contact__form__main__row__textarea__main"></textarea>
+                                                <textarea name="message" required id="contact_message" cols="30" rows="8" placeholder="Write your message here"  className="home__contact__form__main__row__textarea__main"></textarea>
                                             </div>
                                         </div>                                          
                                         <button onClick={contactSubmit} className="home__contact__form__main__submit" >Send</button>

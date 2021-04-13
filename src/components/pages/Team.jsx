@@ -90,12 +90,17 @@ function Team (props) {
         </div>
     }
     const workSubmit= ( e ) => {
+        e.preventDefault();
         const formData = new FormData();
         const photos = document.querySelector('input[type="file"][multiple]');
+        const email = document.querySelector('#work_email').value;
+        const message = document.querySelector('#work_message').value;
 
-        formData.append('title', 'My Vegas Vacation');
+        formData.append('sent', 'Work With Us');
+        formData.append('email', email);
+        formData.append('message', message);
         for (let i = 0; i < photos.files.length; i++) {
-            formData.append('photos', photos.files[i]);
+            formData.append('photos[]', photos.files[i]);
         }
 
         fetch(work_email, {
@@ -151,11 +156,11 @@ function Team (props) {
                                     <form method="POST" action={work_email} enctype="multipart/form-data">
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">
-                                                <input id="email" type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
-                                                <input id="quote" type="hidden" name="work"  value="Work With Us"/>
+                                                <input id="work_email" type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
+                                                <input id="work_quote" type="hidden" name="work"  value="Work With Us"/>
                                                 <div  className="team__work__container__form__main__left__row">
                                                     <div className="team__work__container__form__main__left__row__quote">
-                                                        <textarea name="message" required id="" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>
+                                                        <textarea name="message" required id="work_message" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="team__work__container__form__main__left__row__files">
                                                         <ul  className="team__work__container__form__main__left__row__files__list">

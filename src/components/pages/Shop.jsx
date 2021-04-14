@@ -11,9 +11,11 @@ function Shop (props) {
     const shop_main_url = `${constants.urls.API}/getShopImage`;
     const shop_url = `${constants.urls.API}/getShopByCategory`;
     const cat_url = `${constants.urls.API}/getCategory`;
+    const all_shop_url = `${constants.urls.API}/getAllShop`;
     const [ data, setData ] = useState(null);
     const [ request_data, setReqData ] = useState(null);
     const [ cat_data, setCatData ] = useState(null);
+    const [ all_shop_data, setAllShopData ] = useState(null);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     useEffect(()=>{
@@ -27,6 +29,9 @@ function Shop (props) {
             fetch(cat_url, {
                 method: `GET`
             }),
+            fetch(all_shop_url, {
+                method: `GET`
+            }),
 
         ]).then( res =>{
             return Promise.all(
@@ -38,6 +43,7 @@ function Shop (props) {
             let newState = {};
             let newReqState = {};
             let newCatState = {};
+            let newAllShopState = {};
             let newIsloadedState = {};
             result.forEach( ( el,i ) => {
                 if( el.success ) {
@@ -51,6 +57,9 @@ function Shop (props) {
                         case 2:
                             newCatState = el.category;
                             break;
+                        case 3:
+                            newAllShopState = el.shop;
+                            break;
 
                     }
                 }
@@ -58,6 +67,7 @@ function Shop (props) {
             setData( newState );
             setReqData( newReqState );
             setCatData( newCatState );
+            setAllShopData( newAllShopState );
             setIsLoaded(newIsloadedState);
         })
             .catch( err => {
@@ -105,8 +115,32 @@ function Shop (props) {
             </div>
             <div className="shop__content">
                 <Tabs defaultActiveKey="firstTab" id="uncontrolled-tab-example" className="shop__content__tabs">
+                    <Tab eventKey="firstTab" title="All" className="shop__content__tabs__tab">
+                        <div className="shop__content__tabs__tab__shop">
+                            {all_shop_data && all_shop_data.map(function(it, k) {
+                                return <div className="shop__content__tabs__tab__shop__content">
+                                    <div className={`shop__content__tabs__tab__shop__content__image ${imgOrderClass(k)}`} >
+                                        <Image src={ constants.urls.UPLOAD + it.logo} alt="single shop image"/>
+                                    </div>
+                                    <div className={`shop__content__tabs__tab__shop__content__info ${infoOrderClass(k)}`}>
+                                        <h3 className="shop__content__tabs__tab__shop__content__info__title">{it.title}</h3>
+                                        <p className="shop__content__tabs__tab__shop__content__info__text">{it.description}</p>
+                                        <p className="shop__content__tabs__tab__shop__content__info__price">{it.price} {it.currency.toUpperCase()}</p>
+                                        <NavLink to={it.link}
+                                                 className="shop__content__tabs__tab__shop__content__info__details">Click
+                                            here for more details</NavLink>
+                                        {/*info@circletechnicaldesign.com*/}
+                                        <a href={`mailto:info@circletechnicaldesign.com?subject=Shop:%20${it.title}&body=Title:%20${it.title}%0A%0ADescription:%20${it.description}%0A%0APrice:%20${it.price}%20${it.currency.toUpperCase()}%0A%0AImage:%20${constants.urls.UPLOAD + it.logo}`}
+                                           className="shop__content__tabs__tab__shop__content__info__order">order
+                                            by email</a>
+                                    </div>
+                                </div>
+                            })}
+
+                        </div>
+                    </Tab>
                     {cat_data && cat_data.map(function(item, i) {
-                        return <Tab eventKey={TabKey(i)} title={item.name} className="shop__content__tabs__tab">
+                        return <Tab eventKey={item.name} title={item.name} className="shop__content__tabs__tab">
                             <div className="shop__content__tabs__tab__shop">
                                 {request_data[item.id] && request_data[item.id].map(function(it, j) {
                             return <div className="shop__content__tabs__tab__shop__content">

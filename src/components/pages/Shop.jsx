@@ -78,7 +78,7 @@ function Shop (props) {
     },[props.match.params.id]);
 
     // console.log('test--',cat_data, request_data);
-    if (!isLoaded) {
+    if (isLoaded) {
         return <div className="loader">
             <div className="spinner-border" role="status">
                 <span className="sr-only">Loading...</span>

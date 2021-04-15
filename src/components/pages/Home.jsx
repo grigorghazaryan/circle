@@ -1,4 +1,5 @@
 import {React, useEffect, useState} from 'react';
+import { GoogleReCaptchaProvider,GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
@@ -77,6 +78,7 @@ function Home (props) {
 
                 /* scroll animation end */
             })
+
     },[props.match.params.id]);
 
     const contactSubmit= ( e ) => {
@@ -236,6 +238,7 @@ function Home (props) {
                     <div className="row">
                         <div className="col-12">
                             <div className="home__request__container">
+                                <GoogleReCaptchaProvider reCaptchaKey="6Le9w6kaAAAAAF7WNfxEfI04rMk0zLQ_XyV4HR1_">
                                 <h2 className="home__request__container__title">REQUEST A QUOTE</h2>
                                 <div className="home__request__container__form">
                                     <form method="POST" action={request_email} enctype="multipart/form-data">
@@ -277,9 +280,10 @@ function Home (props) {
                                             </div>
                                             
                                         </div>
-                                        
+
                                     </form>
                                 </div>
+                                </GoogleReCaptchaProvider>
                             </div>
                         </div>
                     </div>
@@ -300,6 +304,7 @@ function Home (props) {
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d761.6320625052497!2d44.493313929216555!3d40.21955559871178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEzJzEwLjQiTiA0NMKwMjknMzcuOSJF!5e0!3m2!1sen!2s!4v1614338625900!5m2!1sen!2s" width="600" height="450" allowFullScreen="" loading="lazy" title="Map"></iframe>
                         </div>
                     </div>
+                    <GoogleReCaptchaProvider reCaptchaKey="6Le9w6kaAAAAAF7WNfxEfI04rMk0zLQ_XyV4HR1_">
                     <div className="col-lg-6 col-12 p-0 order-1 order-lg-12">
                         <div className="home__contact__form">
                             <form method="POST" action={contact_email}   >
@@ -321,6 +326,7 @@ function Home (props) {
                             </form>
                         </div>
                     </div>
+                    </GoogleReCaptchaProvider>
                 </div>
             </div>
         </div>

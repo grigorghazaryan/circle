@@ -2,10 +2,12 @@ import {React, useEffect, useState} from 'react';
 import { Image } from 'react-bootstrap';
 import bannerBg from '../../assets/img/Team/bannerBg.png';
 import employee from '../../assets/img/Team/employee.png';
+import { GoogleReCaptchaProvider,GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import pngFile from '../../assets/img/Home/icons/png-file.svg';
 import gifFile from '../../assets/img/Home/icons/gif-file.svg';
 import box from '../../assets/img/Team/box.png';
 import constants from "../../helpers/constants";
+
 
 function Team (props) {
     const our_team_main_url = `${constants.urls.API}/getOurTeamImage`;
@@ -154,6 +156,7 @@ function Team (props) {
                             <div className="team__work__container">
                                 <h2 className="team__work__container__title">DO YOU WANT TO WORK WITH US?</h2>
                                 <div className="team__work__container__form">
+                                    <GoogleReCaptchaProvider reCaptchaKey="6Le9w6kaAAAAAF7WNfxEfI04rMk0zLQ_XyV4HR1_">
                                     <form method="POST" action={work_email} enctype="multipart/form-data">
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">
@@ -189,6 +192,7 @@ function Team (props) {
                                         </div>
                                         
                                     </form>
+                            </GoogleReCaptchaProvider>
                                 </div>
                             </div>
                         </div>

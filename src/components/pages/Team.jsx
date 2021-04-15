@@ -156,7 +156,7 @@ function Team (props) {
                             <div className="team__work__container">
                                 <h2 className="team__work__container__title">DO YOU WANT TO WORK WITH US?</h2>
                                 <div className="team__work__container__form">
-                                    <GoogleReCaptchaProvider reCaptchaKey="6Le9w6kaAAAAAF7WNfxEfI04rMk0zLQ_XyV4HR1_">
+                                    <GoogleReCaptchaProvider reCaptchaKey="6Lf6s6kaAAAAAPoMQy-Uhe-gQvH1GZ0cT1VnhTdA">
                                     <form method="POST" action={work_email} enctype="multipart/form-data">
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">

@@ -54,6 +54,10 @@ body {
   height: 3rem;
 }
 
+.grecaptcha-badge {
+  display: none !important;
+}
+
 @media only screen and (min-width: 1860px) {
   .container--max {
     max-width: 1855px;

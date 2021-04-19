@@ -13,7 +13,7 @@ import jpgFile from '../../assets/img/Home/icons/jpg-file.svg';
 import pdfFile from '../../assets/img/Home/icons/pdf-file.svg';
 import bannerBg from '../../assets/img/Home/contact-us-image.png';
 import arrow from '../../assets/img/Home/icons/arrow.svg';
-import { Link } from 'react-scroll'
+import { Link } from 'react-scroll';
 import constants from "../../helpers/constants";
 
 function Home (props) {
@@ -147,7 +147,7 @@ function Home (props) {
 
                     </video>
 
-            })}
+            {/*})}*/}
 
         </div> 
         <div className="home__design" id="home__design">

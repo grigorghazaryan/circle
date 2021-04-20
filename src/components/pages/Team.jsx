@@ -4,6 +4,7 @@ import bannerBg from '../../assets/img/Team/bannerBg.png';
 import employee from '../../assets/img/Team/employee.png';
 import { GoogleReCaptchaProvider,GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import pngFile from '../../assets/img/Home/icons/png-file.svg';
+import pdfFile from '../../assets/img/Home/icons/pdf-file.svg';
 import gifFile from '../../assets/img/Home/icons/gif-file.svg';
 import box from '../../assets/img/Team/box.png';
 import constants from "../../helpers/constants";
@@ -91,12 +92,84 @@ function Team (props) {
             </div>
         </div>
     }
+    const onChangeHandler=event=>{
+
+        //get files name
+        const photos = document.querySelector('input[type="file"][multiple]');
+        var  ul = document.querySelector(".team__work__container__form__main__left__row__files__list");
+        var  acceptFiles = document.querySelector("#accept_files");
+        var ext = photos.files[0].name.split('.').pop();
+        // if(ext=="pdf" || ext=="docx" || ext=="doc"){
+        if(ext=="pdf"){
+            acceptFiles.innerHTML = "";
+        } else{
+            acceptFiles.innerHTML = "Choose PDF format!";
+            acceptFiles.style.color = "red";
+            return false;
+        }
+
+        for (let i = 0; i < photos.files.length; i++) {
+            console.log(photos.files[i].name);
+            var li = document.createElement("li");
+            var p = document.createElement("p");
+            var image = document.createElement("IMG");
+            var span = document.createElement("SPAN");
+            li.setAttribute("class", "team__work__container__form__main__left__row__files__list__item");
+            p.setAttribute("class", "team__work__container__form__main__left__row__files__list__item__info");
+            image.setAttribute("class", "team__work__container__form__main__left__row__files__list__item__info__image");
+            image.setAttribute("src", pdfFile);
+            ul.appendChild(li);
+            li.appendChild(p);
+            p.append(image);
+            p.append(span);
+            span.innerHTML = photos.files[i].name;
+        }
+
+    }
+
     const workSubmit= ( e ) => {
         e.preventDefault();
+
         const formData = new FormData();
         const photos = document.querySelector('input[type="file"][multiple]');
         const email = document.querySelector('#work_email').value;
         const message = document.querySelector('#work_message').value;
+        //validation
+        var emailAlertText = document.querySelector('#email_text');
+        var messageAlertText = document.querySelector('#message_text');
+        var sentForm = document.querySelector('#sent_form');
+        var  acceptFiles = document.querySelector("#accept_files");
+        console.log(photos.files.length);
+        if(photos.files.length === 0){
+            acceptFiles.innerHTML = "Please attach your CV";
+            acceptFiles.style.color = "red";
+        }
+        if(email != ''){
+            if( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+                emailAlertText.innerHTML = "";
+                //return true;
+            } else {
+                emailAlertText.innerHTML = "You have entered an invalid email address!";
+                emailAlertText.style.color = "red";
+                //return false;
+            }
+
+        }else{
+            emailAlertText.innerHTML = "This field is required";
+            emailAlertText.style.color = "red";
+          //  return false;
+        }
+
+        if(message != ''){
+            messageAlertText.innerHTML = "";
+        } else {
+            messageAlertText.innerHTML = "This field is required";
+            messageAlertText.style.color = "red";
+            return false;
+        }
+
+
+
 
         formData.append('sent', 'Work With Us');
         formData.append('email', email);
@@ -112,10 +185,23 @@ function Team (props) {
             .then(response => response.json())
             .then(result => {
                 console.log('Success:', result);
+                const photos = document.querySelector('input[type="file"][multiple]').value = '';
+                const email = document.querySelector('#work_email').value = '';
+                const message = document.querySelector('#work_message').value = '';
+                sentForm.innerHTML = "\"Thank you!\n" + "Your message has been successfully sent.\"";
+                sentForm.style.color = "green";
+                setTimeout(function(){
+                    sentForm.style.display='none';
+                }, 3000);
 
             })
             .catch(error => {
                 console.error('Error:', error);
+                sentForm.innerHTML = "\"Thank you!\n" + "Your message has been successfully sent.\"";
+                sentForm.style.color = "green";
+                setTimeout(function(){
+                    sentForm.style.display='none';
+                }, 3000);
             });
     }
     return (
@@ -158,24 +244,28 @@ function Team (props) {
                                 <div className="team__work__container__form">
                                     <GoogleReCaptchaProvider reCaptchaKey="6LdDlKkaAAAAAORPtb5wZduC2uyePRvOgW2vA5l6">
                                     <form method="POST" action={work_email} enctype="multipart/form-data">
+                                            <h4 id="email_text"></h4>
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">
-                                                <input id="work_email" type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
+                                                <input id="work_email"  type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
                                                 <input id="work_quote" type="hidden" name="work"  value="Work With Us"/>
                                                 <div  className="team__work__container__form__main__left__row">
+                                                        <h4 id="message_text"></h4>
                                                     <div className="team__work__container__form__main__left__row__quote">
                                                         <textarea name="message" required id="work_message" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="team__work__container__form__main__left__row__files">
-                                                        <ul  className="team__work__container__form__main__left__row__files__list">
-                                                            <li className="team__work__container__form__main__left__row__files__list__item">
-                                                                <p className="team__work__container__form__main__left__row__files__list__item__info"><Image className="team__work__container__form__main__left__row__files__list__item__info__image" src={pngFile} alt="pdf"/><span>attached file name</span></p>
-                                                            </li>
-                                                            <li className="team__work__container__form__main__left__row__files__list__item">
-                                                                <p className="team__work__container__form__main__left__row__files__list__item__info"><Image className="team__work__container__form__main__left__row__files__list__item__info__image" src={gifFile} alt="gif"/><span>attached file name</span></p>
-                                                            </li>
+                                                        <ul id="ul_file_name" className="team__work__container__form__main__left__row__files__list">
+                                                            {/*<li className="team__work__container__form__main__left__row__files__list__item">*/}
+                                                            {/*    <p className="team__work__container__form__main__left__row__files__list__item__info"><Image className="team__work__container__form__main__left__row__files__list__item__info__image" src={pngFile} alt="pdf"/><span>attached file name</span></p>*/}
+                                                            {/*</li>*/}
+                                                            {/*<li className="team__work__container__form__main__left__row__files__list__item">*/}
+                                                            {/*    <p className="team__work__container__form__main__left__row__files__list__item__info"><Image className="team__work__container__form__main__left__row__files__list__item__info__image" src={gifFile} alt="gif"/><span>attached file name</span></p>*/}
+                                                            {/*</li>*/}
                                                         </ul>
                                                     </div>
+                                                        <h4 id="accept_files"></h4>
+                                                    <h4 id="sent_form"></h4>
                                                 </div>
                                             </div>
                                             <div className="team__work__container__form__main__right">
@@ -183,7 +273,7 @@ function Team (props) {
                                                     <label className="team__work__container__form__main__right__file__label" htmlFor="attach">attach
                                                     your
                                                     CV*</label>
-                                                    <input className="team__work__container__form__main__right__file__input" type="file" id="attach" name="images[]" required multiple accept=".jpg, .jpeg, .png, .gif, .pdf"/>
+                                                    <input onChange={onChangeHandler} className="team__work__container__form__main__right__file__input" type="file" id="attach" name="images[]" required multiple accept="application/pdf"/>{/*application/vnd.ms-excel*/}
                                                 </div>
                                                 
                                                 <button onClick={workSubmit} className="team__work__container__form__main__right__submit">send </button>

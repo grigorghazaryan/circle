@@ -80,13 +80,95 @@ function Home (props) {
             })
 
     },[props.match.params.id]);
+    var allFiles = [];
+    const onChangeHandler=event=>{
+        //get files name
+        const photos = document.querySelector('input[type="file"][multiple]');
+        var  ul = document.querySelector(".home__request__container__form__main__left__row__files__list");
+        var  acceptFiles = document.querySelector("#accept_files");
+        var validFiles = false;
+        for(let i = 0; i<photos.files.length; i++) {
+            var ext = photos.files[i].name.split('.').pop();
+            //|| ext != "gif" || ext != "png" || ext != "jpg"
+            if( ext == "pdf" || ext == "gif" || ext == "png" || ext == "jpg" || ext == "jpeg"){
+                validFiles = true;
+            }
+        }
 
+        // if(ext=="pdf" || ext=="docx" || ext=="doc"){
+        if(validFiles){
+            acceptFiles.innerHTML = "";
+        } else{
+            acceptFiles.innerHTML = "Choose PDF Gif Jpg Jpeg Png format!";
+            acceptFiles.style.color = "red";
+            return false;
+        }
+        for (let i = 0; i < photos.files.length; i++) {
+            allFiles.push(photos.files[i]);
+        }
+        for (let i = 0; i < photos.files.length; i++) {
+            //console.log(photos.files[i].name);
+            var li = document.createElement("li");
+            var p = document.createElement("p");
+            var image = document.createElement("IMG");
+            var span = document.createElement("SPAN");
+            li.setAttribute("class", "team__work__container__form__main__left__row__files__list__item");
+            p.setAttribute("class", "home__request__container__form__main__left__row__files__list__item__info");
+            image.setAttribute("class", "home__request__container__form__main__left__row__files__list__item__info__image");
+            var ext = photos.files[i].name.split('.').pop();
+            if(ext == "pdf"){
+            image.setAttribute("src", pdfFile);
+            }
+            if(ext == "png"){
+            image.setAttribute("src", pngFile);
+            }
+            if(ext == "gif"){
+            image.setAttribute("src", gifFile);
+            }
+            if(ext == "jpg"){
+            image.setAttribute("src", jpgFile);
+            }
+            ul.appendChild(li);
+            li.appendChild(p);
+            p.append(image);
+            p.append(span);
+            span.innerHTML = photos.files[i].name.substring(0,13)+'...';
+        }
+
+    }
     const contactSubmit= ( e ) => {
         e.preventDefault();
         const formData = new FormData();
         const email = document.querySelector('#contact_email').value;
         const message = document.querySelector('#contact_message').value;
+        //validation
+        var emailAlertText = document.querySelector('#email_alert_contact');
+        var messageAlertText = document.querySelector('#message_alert_contact');
+        var sentForm = document.querySelector('#sent_form_contact');
 
+        if(email != ''){
+            if( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+                emailAlertText.innerHTML = "";
+                //return true;
+            } else {
+                emailAlertText.innerHTML = "You have entered an invalid email address!";
+                emailAlertText.style.color = "red";
+                //return false;
+            }
+
+        }else{
+            emailAlertText.innerHTML = "This field is required";
+            emailAlertText.style.color = "red";
+            //  return false;
+        }
+
+        if(message != ''){
+            messageAlertText.innerHTML = "";
+        } else {
+            messageAlertText.innerHTML = "This field is required";
+            messageAlertText.style.color = "red";
+            return false;
+        }
         formData.append('email', email);
         formData.append('message', message);
 
@@ -97,6 +179,16 @@ function Home (props) {
             .then(response => response.json())
             .then(result => {
                 console.log('Success:', result);
+                sentForm.innerHTML = "Your message has been successfully sent.";
+                sentForm.style.color = "green";
+                setTimeout(function(){
+                    sentForm.style.display='none';
+                }, 3000);
+                document.querySelector('input[type="file"][multiple]').value = '';
+                document.querySelector('#contact_email').value = '';
+                document.querySelector('#contact_message').value = '';
+                emailAlertText.innerHTML = "";
+                messageAlertText.innerHTML = "";
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -109,12 +201,45 @@ function Home (props) {
         const photos = document.querySelector('input[type="file"][multiple]');
         const email = document.querySelector('#quote_email').value;
         const message = document.querySelector('#quote_message').value;
+        //validation
+        var emailAlertText = document.querySelector('#email_text_quote');
+        var messageAlertText = document.querySelector('#message_text_quote');
+        var sentForm = document.querySelector('#sent_form_quote');
+        var  acceptFiles = document.querySelector("#accept_files");
+        console.log(photos.files.length,'------', allFiles);
+        if(photos.files.length === 0){
+            acceptFiles.innerHTML = "Please attach FIles";
+            acceptFiles.style.color = "red";
+        }
+        if(email != ''){
+            if( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+                emailAlertText.innerHTML = "";
+                //return true;
+            } else {
+                emailAlertText.innerHTML = "You have entered an invalid email address!";
+                emailAlertText.style.color = "red";
+                //return false;
+            }
+
+        }else{
+            emailAlertText.innerHTML = "This field is required";
+            emailAlertText.style.color = "red";
+            //  return false;
+        }
+
+        if(message != ''){
+            messageAlertText.innerHTML = "";
+        } else {
+            messageAlertText.innerHTML = "This field is required";
+            messageAlertText.style.color = "red";
+            return false;
+        }
 
         formData.append('sent', 'Request A Quote');
         formData.append('email', email);
         formData.append('message', message);
-        for (let i = 0; i < photos.files.length; i++) {
-            formData.append('photos[]', photos.files[i]);
+        for (let i = 0; i < allFiles.length; i++) {
+            formData.append('photos[]', allFiles[i]);
         }
 
         fetch(request_email, {
@@ -124,6 +249,18 @@ function Home (props) {
             .then(response => response.json())
             .then(result => {
                 console.log('Success:', result);
+                sentForm.innerHTML = "Your message has been successfully sent.";
+                sentForm.style.color = "green";
+                setTimeout(function(){
+                    sentForm.style.display='none';
+                }, 3000);
+                document.querySelector('input[type="file"][multiple]').value = '';
+                document.querySelector('#email_text_quote').value = '';
+                document.querySelector('#work_message').value = '';
+                document.querySelector("#ul_file_name ").innerHTML = "";
+                acceptFiles.innerHTML = "";
+                emailAlertText.innerHTML = "";
+                messageAlertText.innerHTML = "";
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -242,37 +379,30 @@ function Home (props) {
                                 <h2 className="home__request__container__title">REQUEST A QUOTE</h2>
                                 <div className="home__request__container__form">
                                     <form method="POST" action={request_email} enctype="multipart/form-data">
+                                        <h4 id="email_text_quote"></h4>
                                         <div  className="home__request__container__form__main">
                                             <div className="home__request__container__form__main__left">
                                                 <input id="quote_email" type="email" name="email" required placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
                                                 <input id="quote" type="hidden" name="quote"  value="Request A Quote"/>
                                                 <div  className="home__request__container__form__main__left__row">
+                                                    <h4 id="message_text_quote"></h4>
                                                     <div className="home__request__container__form__main__left__row__quote">
                                                         <textarea name="message" required id="quote_message" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="home__request__container__form__main__left__row__files">
-                                                        <ul  className="home__request__container__form__main__left__row__files__list">
-                                                            <li className="home__request__container__form__main__left__row__files__list__item">
-                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={pngFile} alt="pdf"/><span>attached file name</span></p>
-                                                            </li>
-                                                            <li className="home__request__container__form__main__left__row__files__list__item">
-                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={gifFile} alt="gif"/><span>attached file name</span></p>
-                                                            </li>
-                                                            <li className="home__request__container__form__main__left__row__files__list__item">
-                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={jpgFile} alt="jpg"/><span>attached file name</span></p>
-                                                            </li>
-                                                            <li className="home__request__container__form__main__left__row__files__list__item">
-                                                                <p className="home__request__container__form__main__left__row__files__list__item__info"><Image className="home__request__container__form__main__left__row__files__list__item__info__image" src={pdfFile} alt="pdf"/><span>attached file name</span></p>                                                          
-                                                            </li>
+                                                        <ul id="ul_file_name" className="home__request__container__form__main__left__row__files__list">
+
                                                         </ul>
                                                     </div>
+                                                    <h4 id="accept_files"></h4>
+                                                    <h4 id="sent_form_quote"></h4>
                                                 </div>
                                             </div>
                                             <div className="home__request__container__form__main__right">
                                                 <div className="home__request__container__form__main__right__file">
                                                     <label className="home__request__container__form__main__right__file__label" htmlFor="attach">attach 
                                                     a file</label>
-                                                    <input className="home__request__container__form__main__right__file__input" type="file" id="attach" multiple name="images[]" accept=".jpg, .jpeg, .png, .gif, .pdf"/>
+                                                    <input onChange={onChangeHandler}  className="home__request__container__form__main__right__file__input" type="file" id="attach" multiple name="images[]" accept=".jpg, .jpeg, .png, .gif, application/pdf"/>
                                                 </div>
                                                 
                                                 <button onClick={quoteSubmit} className="home__request__container__form__main__right__submit" type="submit" >send</button>
@@ -308,19 +438,20 @@ function Home (props) {
                     <div className="col-lg-6 col-12 p-0 order-1 order-lg-12">
                         <div className="home__contact__form">
                             <form method="POST" action={contact_email}   >
-                                {/*ref={this.contactFormRef}*/}
                                 <div  className="home__contact__form__main">
+                                        <h4 id="email_alert_contact"></h4>
                                         <input id="contact_email" required type="text" name="email"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
                                         <input id="contact" type="hidden" name="contact"  value="Contact Us"/>
 
                                         <div  className="home__contact__form__main__row">
+                                            <h4 id="message_alert_contact"></h4>
                                             <div className="home__contact__form__main__row__textarea">
                                                 <label className="home__contact__form__main__row__textarea__label" htmlFor="message">Message</label>
                                                 <textarea name="message" required id="contact_message" cols="30" rows="8" placeholder="Write your message here"  className="home__contact__form__main__row__textarea__main"></textarea>
                                             </div>
-                                        </div>                                          
+                                        </div>
                                         <button onClick={contactSubmit} className="home__contact__form__main__submit" >Send</button>
-                                        
+                                            <h4 id="sent_form_contact"></h4>
                                 </div>
                                     
                             </form>

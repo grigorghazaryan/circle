@@ -92,34 +92,26 @@ function Team (props) {
             </div>
         </div>
     }
-    var allFiles = [];
+    var allImages = [];
+
     const onChangeHandler=event=>{
 
         //get files name
         const photos = document.querySelector('input[type="file"][multiple]');
         var  ul = document.querySelector(".team__work__container__form__main__left__row__files__list");
         var  acceptFiles = document.querySelector("#accept_files");
-        var validFiles = true;
-        for(let i = 0; i<photos.files.length; i++) {
-            var ext = photos.files[i].name.split('.').pop();
-            if(ext != "pdf"){
-                validFiles = false;
-            }
-        }
-
+        var ext = photos.files[0].name.split('.').pop();
         // if(ext=="pdf" || ext=="docx" || ext=="doc"){
-        if(validFiles){
+        if(ext=="pdf"){
             acceptFiles.innerHTML = "";
         } else{
             acceptFiles.innerHTML = "Choose PDF format!";
             acceptFiles.style.color = "red";
             return false;
         }
+
         for (let i = 0; i < photos.files.length; i++) {
-            allFiles.push(photos.files[i]);
-        }
-        for (let i = 0; i < photos.files.length; i++) {
-            //console.log(photos.files[i].name);
+            console.log(photos.files[i].name);
             var li = document.createElement("li");
             var p = document.createElement("p");
             var image = document.createElement("IMG");
@@ -132,7 +124,7 @@ function Team (props) {
             li.appendChild(p);
             p.append(image);
             p.append(span);
-            span.innerHTML = photos.files[i].name.substring(0,13)+'...';
+            span.innerHTML = photos.files[i].name;
         }
 
     }
@@ -149,7 +141,7 @@ function Team (props) {
         var messageAlertText = document.querySelector('#message_text');
         var sentForm = document.querySelector('#sent_form');
         var  acceptFiles = document.querySelector("#accept_files");
-        console.log(photos.files.length,'------', allFiles);
+        console.log(photos.files.length);
         if(photos.files.length === 0){
             acceptFiles.innerHTML = "Please attach your CV";
             acceptFiles.style.color = "red";
@@ -181,11 +173,10 @@ function Team (props) {
         formData.append('sent', 'Work With Us');
         formData.append('email', email);
         formData.append('message', message);
-         for (let i = 0; i < allFiles.length; i++) {
-            formData.append('photos[]', allFiles[i]);
-            //console.log('photos[]',photos);
-         }
-        console.log('Form Data --- ',allFiles);
+        for (let i = 0; i < photos.files.length; i++) {
+            formData.append('photos[]', photos.files[i]);
+        }
+
         fetch(work_email, {
             method: 'POST',
             body: formData,
@@ -201,7 +192,7 @@ function Team (props) {
                 document.querySelector('input[type="file"][multiple]').value = '';
                 document.querySelector('#work_email').value = '';
                 document.querySelector('#work_message').value = '';
-                document.querySelector("#ul_file_name ").innerHTML = "";
+                document.querySelector(".team__work__container__form__main__left__row__files__list__item p").style.display = 'none';
                 acceptFiles.innerHTML = "";
                 emailAlertText.innerHTML = "";
                 messageAlertText.innerHTML = "";
@@ -209,6 +200,11 @@ function Team (props) {
             })
             .catch(error => {
                 console.error('Error:', error);
+                // sentForm.innerHTML = "\"Thank you!\n" + "Your message has been successfully sent.\"";
+                // sentForm.style.color = "green";
+                // setTimeout(function(){
+                //     sentForm.style.display='none';
+                // }, 3000);
             });
     }
     return (
@@ -263,9 +259,15 @@ function Team (props) {
                                                     </div>
                                                     <div className="team__work__container__form__main__left__row__files">
                                                         <ul id="ul_file_name" className="team__work__container__form__main__left__row__files__list">
+                                                            {/*<li className="team__work__container__form__main__left__row__files__list__item">*/}
+                                                            {/*    <p className="team__work__container__form__main__left__row__files__list__item__info"><Image className="team__work__container__form__main__left__row__files__list__item__info__image" src={pngFile} alt="pdf"/><span>attached file name</span></p>*/}
+                                                            {/*</li>*/}
+                                                            {/*<li className="team__work__container__form__main__left__row__files__list__item">*/}
+                                                            {/*    <p className="team__work__container__form__main__left__row__files__list__item__info"><Image className="team__work__container__form__main__left__row__files__list__item__info__image" src={gifFile} alt="gif"/><span>attached file name</span></p>*/}
+                                                            {/*</li>*/}
                                                         </ul>
                                                     </div>
-                                                    <h4 id="accept_files"></h4>
+                                                        <h4 id="accept_files"></h4>
                                                     <h4 id="sent_form"></h4>
                                                 </div>
                                             </div>

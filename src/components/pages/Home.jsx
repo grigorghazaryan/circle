@@ -87,7 +87,8 @@ function Home (props) {
         var  ul = document.querySelector(".home__request__container__form__main__left__row__files__list");
         var  acceptFiles = document.querySelector("#accept_files");
         var validFiles = false;
-        for(let i = 0; i<photos.files.length; i++) {
+        if(photos.files.length > 0){
+        for(let i = 0; i < photos.files.length; i++) {
             var ext = photos.files[i].name.split('.').pop();
             //|| ext != "gif" || ext != "png" || ext != "jpg"
             if( ext == "pdf" || ext == "gif" || ext == "png" || ext == "jpg" || ext == "jpeg"){
@@ -136,6 +137,7 @@ function Home (props) {
             }
             else{span.innerHTML = photos.files[i].name.substring(0,13)+'...';}
         }
+        }
 
     }
     const contactSubmit= ( e ) => {
@@ -179,7 +181,6 @@ function Home (props) {
             .then(result => {
                 console.log('Success:', result);
                 sentForm.innerHTML = "Your message has been successfully sent.";
-                sentForm.style.color = "green";
                 setTimeout(function(){
                     sentForm.style.display='none';
                 }, 3000);
@@ -206,9 +207,9 @@ function Home (props) {
         var sentForm = document.querySelector('#sent_form_quote');
         var  acceptFiles = document.querySelector("#accept_files");
         console.log(photos.files.length,'------', allFiles);
-        if(photos.files.length === 0){
-            acceptFiles.innerHTML = "Please attach FIles";
-        }
+        // if(photos.files.length === 0){
+        //     acceptFiles.innerHTML = "Please attach FIles";
+        // }
         if(email != ''){
             if( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
                 emailAlertText.innerHTML = "";
@@ -233,10 +234,11 @@ function Home (props) {
         formData.append('sent', 'Request A Quote');
         formData.append('email', email);
         formData.append('message', message);
-        for (let i = 0; i < allFiles.length; i++) {
-            formData.append('photos[]', allFiles[i]);
+        if(allFiles.length > 0) {
+            for (let i = 0; i < allFiles.length; i++) {
+                formData.append('photos[]', allFiles[i]);
+            }
         }
-
         fetch(request_email, {
             method: 'POST',
             body: formData,
@@ -245,13 +247,13 @@ function Home (props) {
             .then(result => {
                 console.log('Success:', result);
                 sentForm.innerHTML = "Your message has been successfully sent.";
-                sentForm.style.color = "green";
                 setTimeout(function(){
                     sentForm.style.display='none';
                 }, 3000);
+                allFiles = [];
                 document.querySelector('input[type="file"][multiple]').value = '';
-                document.querySelector('#email_text_quote').value = '';
-                document.querySelector('#work_message').value = '';
+                document.querySelector('#quote_email').value = '';
+                document.querySelector('#quote_message').value = '';
                 document.querySelector("#ul_file_name ").innerHTML = "";
                 acceptFiles.innerHTML = "";
                 emailAlertText.innerHTML = "";

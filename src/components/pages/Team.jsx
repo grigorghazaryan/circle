@@ -191,8 +191,7 @@ function Team (props) {
             .then(response => response.json())
             .then(result => {
                 console.log('Success:', result);
-                sentForm.innerHTML = "\"Thank you!\n" + "Your message has been successfully sent.\"";
-                sentForm.style.color = "green";
+                sentForm.innerHTML = "Your message has been successfully sent.";
                 setTimeout(function(){
                     sentForm.style.display='none';
                 }, 3000);

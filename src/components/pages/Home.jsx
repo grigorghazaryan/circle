@@ -182,7 +182,7 @@ function Home (props) {
                 console.log('Success:', result);
                 sentForm.innerHTML = "Your message has been successfully sent.";
                 setTimeout(function(){
-                    sentForm.style.display='none';
+                    sentForm.innerHTML = "";
                 }, 3000);
                 document.querySelector('input[type="file"][multiple]').value = '';
                 document.querySelector('#contact_email').value = '';
@@ -248,7 +248,8 @@ function Home (props) {
                 console.log('Success:', result);
                 sentForm.innerHTML = "Your message has been successfully sent.";
                 setTimeout(function(){
-                    sentForm.style.display='none';
+                    // sentForm.style.display='none';
+                    sentForm.innerHTML = "";
                 }, 3000);
                 allFiles = [];
                 document.querySelector('input[type="file"][multiple]').value = '';

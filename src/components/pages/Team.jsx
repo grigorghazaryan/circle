@@ -112,7 +112,6 @@ function Team (props) {
             acceptFiles.innerHTML = "";
         } else{
             acceptFiles.innerHTML = "Choose PDF format!";
-            acceptFiles.style.color = "red";
             return false;
         }
         for (let i = 0; i < photos.files.length; i++) {
@@ -132,7 +131,10 @@ function Team (props) {
             li.appendChild(p);
             p.append(image);
             p.append(span);
-            span.innerHTML = photos.files[i].name.substring(0,13)+'...';
+            if(photos.files[i].name.length < 13){
+                span.innerHTML = photos.files[i].name.substring(0,13);
+            }
+            else{span.innerHTML = photos.files[i].name.substring(0,13)+'...';}
         }
 
     }
@@ -152,7 +154,6 @@ function Team (props) {
         console.log(photos.files.length,'------', allFiles);
         if(photos.files.length === 0){
             acceptFiles.innerHTML = "Please attach your CV";
-            acceptFiles.style.color = "red";
         }
         if(email != ''){
             if( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
@@ -160,13 +161,11 @@ function Team (props) {
                 //return true;
             } else {
                 emailAlertText.innerHTML = "You have entered an invalid email address!";
-                emailAlertText.style.color = "red";
                 //return false;
             }
 
         }else{
             emailAlertText.innerHTML = "This field is required";
-            emailAlertText.style.color = "red";
           //  return false;
         }
 
@@ -174,7 +173,6 @@ function Team (props) {
             messageAlertText.innerHTML = "";
         } else {
             messageAlertText.innerHTML = "This field is required";
-            messageAlertText.style.color = "red";
             return false;
         }
 
@@ -251,22 +249,22 @@ function Team (props) {
                                 <div className="team__work__container__form">
                                     <GoogleReCaptchaProvider reCaptchaKey="6LdDlKkaAAAAAORPtb5wZduC2uyePRvOgW2vA5l6">
                                     <form method="POST" action={work_email} enctype="multipart/form-data">
-                                            <h4 id="email_text"></h4>
+                                            <h4 id="email_text" className="error_message"></h4>
                                         <div  className="team__work__container__form__main">
                                             <div className="team__work__container__form__main__left">
                                                 <input id="work_email"  type="email" required name="email"  placeholder="email@email.com*" className="team__work__container__form__main__left__email"/>
                                                 <input id="work_quote" type="hidden" name="work"  value="Work With Us"/>
                                                 <div  className="team__work__container__form__main__left__row">
-                                                        <h4 id="message_text"></h4>
                                                     <div className="team__work__container__form__main__left__row__quote">
+                                                        <h4 id="message_text"  className="error_message"></h4>
                                                         <textarea name="message" required id="work_message" cols="30" rows="8" placeholder="Write about your work here *"  className="team__work__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="team__work__container__form__main__left__row__files">
                                                         <ul id="ul_file_name" className="team__work__container__form__main__left__row__files__list">
                                                         </ul>
                                                     </div>
-                                                    <h4 id="accept_files"></h4>
-                                                    <h4 id="sent_form"></h4>
+                                                    <h4 id="accept_files" className="error_message"></h4>
+                                                    <h4 id="sent_form" className="success_message"></h4>
                                                 </div>
                                             </div>
                                             <div className="team__work__container__form__main__right">

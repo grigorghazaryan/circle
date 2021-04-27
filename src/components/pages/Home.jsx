@@ -100,7 +100,6 @@ function Home (props) {
             acceptFiles.innerHTML = "";
         } else{
             acceptFiles.innerHTML = "Choose PDF Gif Jpg Jpeg Png format!";
-            acceptFiles.style.color = "red";
             return false;
         }
         for (let i = 0; i < photos.files.length; i++) {
@@ -125,14 +124,17 @@ function Home (props) {
             if(ext == "gif"){
             image.setAttribute("src", gifFile);
             }
-            if(ext == "jpg"){
+            if(ext == "jpg" || ext == "jpeg"){
             image.setAttribute("src", jpgFile);
             }
             ul.appendChild(li);
             li.appendChild(p);
             p.append(image);
             p.append(span);
-            span.innerHTML = photos.files[i].name.substring(0,13)+'...';
+            if(photos.files[i].name.length < 13){
+                span.innerHTML = photos.files[i].name.substring(0,13);
+            }
+            else{span.innerHTML = photos.files[i].name.substring(0,13)+'...';}
         }
 
     }
@@ -152,23 +154,20 @@ function Home (props) {
                 //return true;
             } else {
                 emailAlertText.innerHTML = "You have entered an invalid email address!";
-                emailAlertText.style.color = "red";
                 //return false;
             }
 
         }else{
             emailAlertText.innerHTML = "This field is required";
-            emailAlertText.style.color = "red";
             //  return false;
         }
 
-        if(message != ''){
-            messageAlertText.innerHTML = "";
-        } else {
-            messageAlertText.innerHTML = "This field is required";
-            messageAlertText.style.color = "red";
-            return false;
-        }
+        // if(message != ''){
+        //     messageAlertText.innerHTML = "";
+        // } else {
+        //     messageAlertText.innerHTML = "This field is required";
+        //     return false;
+        // }
         formData.append('email', email);
         formData.append('message', message);
 
@@ -209,7 +208,6 @@ function Home (props) {
         console.log(photos.files.length,'------', allFiles);
         if(photos.files.length === 0){
             acceptFiles.innerHTML = "Please attach FIles";
-            acceptFiles.style.color = "red";
         }
         if(email != ''){
             if( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
@@ -217,13 +215,11 @@ function Home (props) {
                 //return true;
             } else {
                 emailAlertText.innerHTML = "You have entered an invalid email address!";
-                emailAlertText.style.color = "red";
                 //return false;
             }
 
         }else{
             emailAlertText.innerHTML = "This field is required";
-            emailAlertText.style.color = "red";
             //  return false;
         }
 
@@ -231,7 +227,6 @@ function Home (props) {
             messageAlertText.innerHTML = "";
         } else {
             messageAlertText.innerHTML = "This field is required";
-            messageAlertText.style.color = "red";
             return false;
         }
 
@@ -379,14 +374,14 @@ function Home (props) {
                                 <h2 className="home__request__container__title">REQUEST A QUOTE</h2>
                                 <div className="home__request__container__form">
                                     <form method="POST" action={request_email} enctype="multipart/form-data">
-                                        <h4 id="email_text_quote"></h4>
+                                        <h4 id="email_text_quote" className="error_message"></h4>
                                         <div  className="home__request__container__form__main">
                                             <div className="home__request__container__form__main__left">
                                                 <input id="quote_email" type="email" name="email" required placeholder="email@email.com*" className="home__request__container__form__main__left__email"/>
                                                 <input id="quote" type="hidden" name="quote"  value="Request A Quote"/>
                                                 <div  className="home__request__container__form__main__left__row">
-                                                    <h4 id="message_text_quote"></h4>
                                                     <div className="home__request__container__form__main__left__row__quote">
+                                                        <h4 className="error_message" id="message_text_quote"></h4>
                                                         <textarea name="message" required id="quote_message" cols="30" rows="8" placeholder="Write your quote here *"  className="home__request__container__form__main__left__row__quote__textarea"></textarea>
                                                     </div>
                                                     <div className="home__request__container__form__main__left__row__files">
@@ -394,8 +389,8 @@ function Home (props) {
 
                                                         </ul>
                                                     </div>
-                                                    <h4 id="accept_files"></h4>
-                                                    <h4 id="sent_form_quote"></h4>
+                                                    <h4 id="accept_files" className="error_message"></h4>
+                                                    <h4 id="sent_form_quote" className="success_message"></h4>
                                                 </div>
                                             </div>
                                             <div className="home__request__container__form__main__right">
@@ -439,19 +434,18 @@ function Home (props) {
                         <div className="home__contact__form">
                             <form method="POST" action={contact_email}   >
                                 <div  className="home__contact__form__main">
-                                        <h4 id="email_alert_contact"></h4>
+                                        <h4 id="email_alert_contact" className="error_message"></h4>
                                         <input id="contact_email" required type="text" name="email"  placeholder="email@email.com*" className="home__contact__form__main__email"/>
                                         <input id="contact" type="hidden" name="contact"  value="Contact Us"/>
 
                                         <div  className="home__contact__form__main__row">
-                                            <h4 id="message_alert_contact"></h4>
                                             <div className="home__contact__form__main__row__textarea">
                                                 <label className="home__contact__form__main__row__textarea__label" htmlFor="message">Message</label>
                                                 <textarea name="message" required id="contact_message" cols="30" rows="8" placeholder="Write your message here"  className="home__contact__form__main__row__textarea__main"></textarea>
                                             </div>
                                         </div>
                                         <button onClick={contactSubmit} className="home__contact__form__main__submit" >Send</button>
-                                            <h4 id="sent_form_contact"></h4>
+                                            <h4 id="sent_form_contact" className="success_message"></h4>
                                 </div>
                                     
                             </form>

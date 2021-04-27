@@ -58,6 +58,20 @@ body {
   visibility: hidden !important;
 }
 
+.error_message {
+  color: #ff0000;
+  font-size: 18px;
+  margin-bottom: 0;
+  font-family: "AvenirRegular";
+}
+
+.success_message {
+  color: #32CD32;
+  font-size: 18px;
+  margin-bottom: 0;
+  font-family: "AvenirRegular";
+}
+
 @media only screen and (min-width: 1860px) {
   .container--max {
     max-width: 1855px;
@@ -793,6 +807,7 @@ body {
 
 .home__request__container__form__main__left {
   min-width: 708px;
+  max-width: 708px;
 }
 
 .home__request__container__form__main__left__email {
@@ -846,6 +861,13 @@ body {
   border-bottom: 1px #9A9A9A dashed;
   width: 100%;
   margin-top: 32px;
+  position: relative;
+}
+
+.home__request__container__form__main__left__row__quote #message_text_quote {
+  position: absolute;
+  left: 0;
+  top: -24px;
 }
 
 .home__request__container__form__main__left__row__quote__textarea {
@@ -1496,6 +1518,7 @@ body {
 
 .team__work__container__form__main__left {
   min-width: 708px;
+  max-width: 708px;
 }
 
 .team__work__container__form__main__left__email {
@@ -1549,6 +1572,13 @@ body {
   border-bottom: 1px #9A9A9A dashed;
   width: 100%;
   margin-top: 32px;
+  position: relative;
+}
+
+.team__work__container__form__main__left__row__quote #message_text {
+  position: absolute;
+  left: 0;
+  top: -24px;
 }
 
 .team__work__container__form__main__left__row__quote__textarea {

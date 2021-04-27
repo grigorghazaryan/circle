@@ -28,6 +28,18 @@ body{
 .grecaptcha-badge{
     visibility: hidden !important;
 }
+.error_message{
+    color: #ff0000;
+    font-size: 18px;
+    margin-bottom: 0;
+    font-family: $fontRegular;
+}
+.success_message{
+    color:#32CD32;
+    font-size: 18px;
+    margin-bottom: 0;
+    font-family: $fontRegular;
+}
 @media only screen and (min-width: 1860px) {
     .container{
         &--max{

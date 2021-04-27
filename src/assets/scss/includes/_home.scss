@@ -290,6 +290,7 @@
                     display: flex;
                     &__left{
                         min-width: 708px;
+                        max-width: 708px;
                         &__email{
                             background: #DEDEDE;
                             padding: 24px 38px;
@@ -319,6 +320,12 @@
                                 border-bottom: 1px #9A9A9A dashed;
                                 width: 100%;
                                 margin-top: 32px;
+                                position: relative;
+                                #message_text_quote{
+                                    position: absolute;
+                                    left: 0;
+                                    top: -24px;
+                                }
                                 &__textarea{
                                     background: #E8E8E8;
                                     padding: 16px;
